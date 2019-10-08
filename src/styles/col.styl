@@ -1,0 +1,23 @@
+@require '_mixins'
+
+.w-col
+  float left
+  padding 0 10px
+  box-sizing border-box
+
+for $size in (1..12)
+  .w-col-{$size}
+    width ($size/12) * 100%
+
+for $size in (1..11)
+  .w-col-offset-{$size}
+    margin-left ($size/12) * 100%
+
++breakpoint('xs')
+  .w-col
+    float left
+    width 100%
+  & + .w-col
+    margin-top 20px
+  [class*=w-col-offset]
+    margin-left 0
