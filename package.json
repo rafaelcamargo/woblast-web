@@ -1,0 +1,24 @@
+{
+  "name": "woblest-web",
+  "version": "0.1.0",
+  "description": "An experimental project to get started with HG Brasil Finance API and ChartJS",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rafaelcamargo/woblast-web.git"
+  },
+  "keywords": [
+    "currencies",
+    "stocks",
+    "rates"
+  ],
+  "author": "Rafael Camargo <hello@rafaelcamargo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaelcamargo/woblast-web/issues"
+  },
+  "homepage": "https://github.com/rafaelcamargo/woblast-web#readme"
+}
