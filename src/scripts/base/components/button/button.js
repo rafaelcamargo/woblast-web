@@ -11,11 +11,15 @@ export class WButton extends Component {
   }
   render() {
     return (
-      <button className={ this.state.className }>
+      <button type={ buildType(this.props.type) } className={ this.state.className }>
         { this.props.children }
       </button>
     );
   }
+}
+
+function buildType(type){
+  return type ? type : 'button';
 }
 
 function buildClassName({ theme, display }){
