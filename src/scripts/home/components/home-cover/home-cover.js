@@ -23,7 +23,7 @@ export class WHomeCover extends Component {
               <WCol size="12">
                 <p>
                   This is an experimental project to get started with HG
-                  Brasil API and ChartJS.
+                  Brasil Finance API and ChartJS.
                 </p>
               </WCol>
             </WRow>
