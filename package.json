@@ -2,9 +2,12 @@
   "name": "woblest-web",
   "version": "0.1.0",
   "description": "An experimental project to get started with HG Brasil Finance API and ChartJS",
-  "main": "src/index.js",
+  "main": "src/scripts/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "format": "eslint ./src/**/*.js",
+    "start": "webpack-dev-server",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,40 @@
   "bugs": {
     "url": "https://github.com/rafaelcamargo/woblast-web/issues"
   },
-  "homepage": "https://github.com/rafaelcamargo/woblast-web#readme"
+  "homepage": "https://github.com/rafaelcamargo/woblast-web#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "codecov": "^3.5.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^6.4.0",
+    "eslint-plugin-react": "^7.14.3",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "prerender-spa-plugin": "^3.4.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "terser-webpack-plugin": "^2.0.1",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-meta-tags": "^0.7.4",
+    "react-router-dom": "^5.0.1",
+    "react-router-scroll-top": "^0.2.1"
+  }
 }
