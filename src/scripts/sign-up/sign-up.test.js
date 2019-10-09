@@ -36,6 +36,6 @@ describe('Sign Up', () => {
 
   it('should contain a link to sign in', () => {
     const wrapper = mount();
-    expect(wrapper.find(Link).prop('to')).toEqual('/signin');
+    expect(wrapper.find(Link).prop('to')).toEqual('/sign-in');
   });
 });

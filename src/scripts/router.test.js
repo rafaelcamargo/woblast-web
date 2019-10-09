@@ -4,6 +4,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 import { AppRouter } from './router';
 import { Home } from '@scripts/home/home';
+import WHistory from '@scripts/base/components/history/history';
+import { SignIn } from '@scripts/sign-in/sign-in';
+import { SignUp } from '@scripts/sign-up/sign-up';
 
 describe('App Router', () => {
   function mount(){
@@ -15,11 +18,30 @@ describe('App Router', () => {
     expect(wrapper.find(Router)).toBeDefined();
   });
 
+  it('should contain a History', () => {
+    const wrapper = mount();
+    expect(wrapper.find(WHistory).length).toEqual(1);
+  });
+
   it('should contain Home route', () => {
     const wrapper = mount();
     const route = wrapper.find(ScrollToTop).children().at(0);
     expect(route.prop('path')).toEqual('/');
     expect(route.prop('exact')).toEqual(true);
     expect(route.prop('component')).toEqual(Home);
+  });
+
+  it('should contain Sign Up route', () => {
+    const wrapper = mount();
+    const route = wrapper.find(ScrollToTop).children().at(1);
+    expect(route.prop('path')).toEqual('/sign-up');
+    expect(route.prop('component')).toEqual(SignUp);
+  });
+
+  it('should contain Sign In route', () => {
+    const wrapper = mount();
+    const route = wrapper.find(ScrollToTop).children().at(2);
+    expect(route.prop('path')).toEqual('/sign-in');
+    expect(route.prop('component')).toEqual(SignIn);
   });
 });

@@ -39,7 +39,7 @@ export class WHomeCover extends Component {
             <WRow align="center">
               <WCol size="12">
                 <p className="w-home-cover-signup-row">
-                  Don't have an account? <Link to="/signup">Sign Up</Link>.
+                  Don't have an account? <Link to="/sign-up">Sign Up</Link>.
                 </p>
               </WCol>
             </WRow>
