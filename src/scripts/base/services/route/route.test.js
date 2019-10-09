@@ -4,7 +4,8 @@ describe('Route Service', () => {
   function mockHistory({ pathname }){
     return {
       listen: jest.fn(cb => cb()),
-      location: { pathname }
+      location: { pathname },
+      push: jest.fn()
     };
   }
 
@@ -12,5 +13,13 @@ describe('Route Service', () => {
     const historyMock = mockHistory({ pathname: '/' });
     routeService.init(historyMock);
     expect(routeService.history).toEqual(historyMock);
+  });
+
+  it('should navigate to route by route path', () => {
+    const routePath = '/sign-in';
+    const historyMock = mockHistory({ pathname: '/' });
+    routeService.init(historyMock);
+    routeService.go(routePath);
+    expect(historyMock.push).toHaveBeenCalledWith(routePath);
   });
 });
