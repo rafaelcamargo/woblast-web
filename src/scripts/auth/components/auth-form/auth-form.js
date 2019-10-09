@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import authService from '@scripts/auth/services/auth/auth';
 import domService from '@scripts/base/services/dom/dom';
 import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
@@ -23,11 +24,11 @@ export class WAuthForm extends Component {
 
   signIn = () => {
     const { email, password } = this.state;
-    const user = userResource.findByEmail(email);
-    if(isValidateCredential(user, password))
+    authService.auth(email, password, () => {
       routeService.go('/dashboard');
-    else
-      this.setErrorMessage('Invalid credentials. Please, try again.');
+    }, err => {
+      this.setErrorMessage(err);
+    });
   };
 
   onUserDataChange = ({ target }) => {
@@ -79,12 +80,6 @@ export class WAuthForm extends Component {
       </div>
     );
   }
-}
-
-function isValidateCredential(user, password){
-  if(!user)
-    return false;
-  return user.password === password;
 }
 
 function getInitialEmail(){
