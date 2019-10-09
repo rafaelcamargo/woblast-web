@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
 import { WButton } from '@scripts/base/components/button/button';
 import { WCol } from '@scripts/base/components/col/col';
@@ -19,7 +20,9 @@ export class WUserForm extends Component {
   save = () => {
     const { name, email, password } = this.state;
     this.setErrorMessage(null);
-    userResource.save({ name, email, password }, () => {}, err => {
+    userResource.save({ name, email, password }, () => {
+      routeService.go(`/sign-in?email=${email}`);
+    }, err => {
       this.setErrorMessage(err);
     });
   };
