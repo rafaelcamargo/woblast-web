@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { WAlert } from '@scripts/base/components/alert/alert';
 import { WForm } from '@scripts/base/components/form/form';
 
 describe('Form', () => {
@@ -24,5 +25,12 @@ describe('Form', () => {
     wrapper.simulate('submit', eventMock);
     expect(eventMock.preventDefault).toHaveBeenCalled();
     expect(onSubmit).toHaveBeenCalled();
+  });
+
+  it('should show error message', () => {
+    const errorMessage = 'err';
+    const wrapper = mount({ errorMessage });
+    expect(wrapper.find(WAlert).prop('theme')).toEqual('danger');
+    expect(wrapper.find(WAlert).prop('children').text()).toEqual('err');
   });
 });
