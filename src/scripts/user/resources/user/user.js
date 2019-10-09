@@ -2,11 +2,14 @@ import storageService from '@scripts/base/services/storage/storage';
 
 const _public = {};
 
-_public.save = user => {
+_public.save = (user, onSuccess, onError) => {
   const existingUser = _public.findByEmail(user.email);
-  if(existingUser)
-    return 'This email has been already used.';
-  storageService.set(getCollectionKey(), appendUserToCollection(user));
+  if(existingUser) {
+    onError('This email has already been used.');
+  } else {
+    storageService.set(getCollectionKey(), appendUserToCollection(user));
+    onSuccess(user);
+  }
 };
 
 _public.findByEmail = email => {

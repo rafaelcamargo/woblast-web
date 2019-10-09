@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import userResource from '@scripts/user/resources/user/user';
 import { WButton } from '@scripts/base/components/button/button';
 import { WCol } from '@scripts/base/components/col/col';
 import { WField } from '@scripts/base/components/field/field';
@@ -16,7 +17,11 @@ export class WUserForm extends Component {
   }
 
   save = () => {
-    console.log(this.state);
+    const { name, email, password } = this.state;
+    this.setErrorMessage(null);
+    userResource.save({ name, email, password }, () => {}, err => {
+      this.setErrorMessage(err);
+    });
   };
 
   onUserDataChange = ({ target }) => {
@@ -24,10 +29,14 @@ export class WUserForm extends Component {
     this.setState({ [name]: value });
   };
 
+  setErrorMessage = errorMessage => {
+    this.setState({ errorMessage });
+  };
+
   render() {
     return (
       <div className="w-user-form">
-        <WForm onSubmit={ this.save }>
+        <WForm onSubmit={ this.save } errorMessage={ this.state.errorMessage }>
           <WRow>
             <WCol size="12">
               <WField label="Name">

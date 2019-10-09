@@ -6,7 +6,7 @@ import { WForm } from '@scripts/base/components/form/form';
 describe('Form', () => {
   function mount(props = {}){
     return shallow(
-      <WForm onSubmit={ props.onSubmit }>
+      <WForm onSubmit={ props.onSubmit } errorMessage={ props.errorMessage }>
         { props.content }
       </WForm>
     );
@@ -31,6 +31,6 @@ describe('Form', () => {
     const errorMessage = 'err';
     const wrapper = mount({ errorMessage });
     expect(wrapper.find(WAlert).prop('theme')).toEqual('danger');
-    expect(wrapper.find(WAlert).prop('children').text()).toEqual('err');
+    expect(wrapper.find(WAlert).childAt(0).text()).toEqual('err');
   });
 });

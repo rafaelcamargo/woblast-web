@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import userResource from '@scripts/user/resources/user/user';
 import { WForm } from '@scripts/base/components/form/form';
 import { WUserForm } from '@scripts/user/components/user-form/user-form';
 
@@ -27,7 +28,7 @@ describe('User Form', () => {
   });
 
   it('should save a user', () => {
-    console.log = jest.fn();
+    userResource.save = jest.fn();
     const name = 'Rafael';
     const email = 'some@email.com';
     const password = '123';
@@ -36,6 +37,23 @@ describe('User Form', () => {
     fillInput(wrapper, 'email', email);
     fillInput(wrapper, 'password', password);
     wrapper.instance().save();
-    expect(console.log).toHaveBeenCalledWith({ name, email, password });
+    expect(userResource.save.mock.calls[0][0]).toEqual({ name, email, password });
+  });
+
+  it('should set error message on save error', () => {
+    const errorMessage = 'err';
+    userResource.save = jest.fn((user, onSuccess, onError) => onError(errorMessage));
+    const wrapper = mount();
+    wrapper.instance().save();
+    expect(wrapper.find(WForm).prop('errorMessage')).toEqual(errorMessage);
+  });
+
+  it('should delete set error message on save', () => {
+    userResource.save = jest.fn();
+    const wrapper = mount();
+    const instance = wrapper.instance()
+    instance.setErrorMessage('err');
+    instance.save();
+    expect(wrapper.find(WForm).prop('errorMessage')).toEqual(null);
   });
 });
