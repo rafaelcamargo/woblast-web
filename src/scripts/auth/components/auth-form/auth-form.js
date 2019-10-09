@@ -25,7 +25,7 @@ export class WAuthForm extends Component {
     const { email, password } = this.state;
     const user = userResource.findByEmail(email);
     if(isValidateCredential(user, password))
-      console.log('Great!');
+      routeService.go('/dashboard');
     else
       this.setErrorMessage('Invalid credentials. Please, try again.');
   };

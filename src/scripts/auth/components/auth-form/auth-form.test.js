@@ -29,6 +29,7 @@ describe('User Form', () => {
   beforeEach(() => {
     userResource.findByEmail = jest.fn(email => mockUsers()[email]);
     routeService.getSearchParams = jest.fn();
+    routeService.go = jest.fn();
     domService.focusElement = jest.fn();
   });
 
@@ -57,14 +58,13 @@ describe('User Form', () => {
   });
 
   it('should authenticate a user', () => {
-    console.log = jest.fn();
     const email = 'leo@email.com';
     const password = '123';
     const wrapper = mount();
     fillInput(wrapper, 'email', email);
     fillInput(wrapper, 'password', password);
     wrapper.instance().signIn();
-    expect(console.log).toHaveBeenCalledWith('Great!');
+    expect(routeService.go).toHaveBeenCalledWith('/dashboard');
   });
 
   it('should fail to authenticate if email has not been found', () => {
