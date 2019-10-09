@@ -1,0 +1,20 @@
+@require '_variables'
+@require '_mixins'
+
+theme($background-color, $color)
+  background-color $background-color
+  color $color
+  border-color $color
+
+.w-alert
+  padding 12px
+  font-size $font-size-xs
+  border-width 1px
+  border-style solid
+  theme($color-grey-light, $color-grey-dark)
+  border-radius(4px)
+  box-sizing(border-box)
+  &.w-alert-warning
+    theme($color-yellow-light, $color-yellow-semi-dark)
+  &.w-alert-danger
+    theme($color-red-light, $color-red-semi-dark)
