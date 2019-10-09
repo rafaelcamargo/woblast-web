@@ -16,7 +16,16 @@ module.exports = {
     })
   ],
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: /(.*)\/assets\//,
+          to: function(context){
+            return context.parsedUrl.pathname.replace(/(.*)\/assets\//, '/assets/');
+          },
+        }
+      ]
+    },
     port: 9000,
     host: '0.0.0.0'
   }
