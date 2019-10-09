@@ -35,4 +35,9 @@ describe('Storage Service', () => {
     const value = storageService.get('users', { isJSON: true });
     expect(value).toEqual([{some: 'user'}]);
   });
+
+  it('should return undefined if getting value by non existing key as JSON', () => {
+    const value = storageService.get('cities', { isJSON: true });
+    expect(value).not.toBeDefined();
+  });
 });

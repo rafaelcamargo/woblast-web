@@ -7,8 +7,9 @@ _public.set = (key, value) => {
 };
 
 _public.get = (key, { isJSON } = {}) => {
-  const value = decode(localStorageService.get(encode(key)));
-  return isJSON ? JSON.parse(value) : value;
+  const value = localStorageService.get(encode(key));
+  if(value)
+    return isJSON ? JSON.parse(decode(value)) : decode(value);
 };
 
 function encode(value){
