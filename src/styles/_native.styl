@@ -38,6 +38,11 @@ input
   padding 0 10px
   font-size $font-size-sm
   line-height 35px
-  border 1px solid $color-grey
+  border-width 1px
+  border-style solid
+  border-color $color-grey
   box-sizing(border-box)
   border-radius(4px)
+  +highlight()
+    border-color $color-blue
+    outline 0

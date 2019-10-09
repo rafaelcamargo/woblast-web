@@ -1,5 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import domService from '@scripts/base/services/dom/dom';
+import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
 import { WForm } from '@scripts/base/components/form/form';
 import { WAuthForm } from '@scripts/auth/components/auth-form/auth-form';
@@ -26,6 +28,8 @@ describe('User Form', () => {
 
   beforeEach(() => {
     userResource.findByEmail = jest.fn(email => mockUsers()[email]);
+    routeService.getSearchParams = jest.fn();
+    domService.focusElement = jest.fn();
   });
 
   it('should have appropriate css class', () => {
@@ -36,6 +40,20 @@ describe('User Form', () => {
   it('should contain a form', () => {
     const wrapper = mount();
     expect(wrapper.find(WForm).length).toEqual(1);
+  });
+
+  it('should fill email on initialization if initial email has been defined on url', () => {
+    const email = 'leo@email.com';
+    routeService.getSearchParams = jest.fn(() => email);
+    const wrapper = mount();
+    expect(wrapper.find('input').at(0).prop('defaultValue')).toEqual(email);
+  });
+
+  it('should focus password input on initialization if initial email has been found on url', () => {
+    routeService.getSearchParams = jest.fn(() => 'leo@email.com');
+    const wrapper = mount();
+    const instance = wrapper.instance();
+    expect(domService.focusElement).toHaveBeenCalledWith(instance.passwordInputRef);
   });
 
   it('should authenticate a user', () => {

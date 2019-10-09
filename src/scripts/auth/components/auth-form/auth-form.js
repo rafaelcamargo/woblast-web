@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import domService from '@scripts/base/services/dom/dom';
+import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
 import { WButton } from '@scripts/base/components/button/button';
 import { WCol } from '@scripts/base/components/col/col';
@@ -9,10 +11,14 @@ import { WRow } from '@scripts/base/components/row/row';
 export class WAuthForm extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      email: '',
-      password: ''
-    };
+    this.initialEmail = getInitialEmail();
+    this.passwordInputRef = React.createRef();
+    this.state = { email: this.initialEmail, password: '' };
+  }
+
+  componentDidMount(){
+    if(this.initialEmail)
+      domService.focusElement(this.passwordInputRef);
   }
 
   signIn = () => {
@@ -36,7 +42,7 @@ export class WAuthForm extends Component {
   render() {
     return (
       <div className="w-auth-form">
-        <WForm onSubmit={ this.save } errorMessage={ this.state.errorMessage }>
+        <WForm onSubmit={ this.signIn } errorMessage={ this.state.errorMessage }>
           <WRow>
             <WCol size="12">
               <WField label="Email">
@@ -57,6 +63,7 @@ export class WAuthForm extends Component {
                   name="password"
                   defaultValue={ this.state.password }
                   onChange={ this.onUserDataChange }
+                  ref={ this.passwordInputRef }
                   required />
               </WField>
             </WCol>
@@ -78,4 +85,8 @@ function isValidateCredential(user, password){
   if(!user)
     return false;
   return user.password === password;
+}
+
+function getInitialEmail(){
+  return routeService.getSearchParams('email') || '';
 }
