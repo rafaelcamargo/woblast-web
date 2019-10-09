@@ -1,11 +1,12 @@
+import queryStringService from 'query-string';
 import routeService from '@scripts/base/services/route/route';
 
 describe('Route Service', () => {
-  function mockHistory({ pathname }){
+  function mockHistory({ pathname, search }){
     return {
       listen: jest.fn(cb => cb()),
-      location: { pathname },
-      push: jest.fn()
+      location: { pathname, search },
+      push: jest.fn(),
     };
   }
 
@@ -21,5 +22,21 @@ describe('Route Service', () => {
     routeService.init(historyMock);
     routeService.go(routePath);
     expect(historyMock.push).toHaveBeenCalledWith(routePath);
+  });
+
+  it('should get search params', () => {
+    const historyMock = mockHistory({ search: '?email=camargo@email.com&source=portfolio' });
+    routeService.init(historyMock);
+    const params = routeService.getSearchParams();
+    expect(params).toEqual({
+      email: 'camargo@email.com',
+      source: 'portfolio'
+    });
+  });
+
+  it('should get a single search param', () => {
+    const historyMock = mockHistory({ search: '?email=leo@email.com' });
+    routeService.init(historyMock);
+    expect(routeService.getSearchParams('email')).toEqual('leo@email.com');
   });
 });
