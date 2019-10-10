@@ -7,6 +7,8 @@ import { WTopbar } from '@scripts/base/components/topbar/topbar';
 export class WViewport extends Component {
   constructor(props){
     super(props);
+    if(shouldRedirectToSignIn())
+      routeService.go('/sign-in');
     if(shouldRedirectToDashboard())
       routeService.go('/dashboard');
   }
@@ -22,11 +24,20 @@ export class WViewport extends Component {
   }
 }
 
+function shouldRedirectToSignIn(){
+  return !isAuthenticated() && !pathnameIsOneOf(['/', '/sign-up', '/sign-in']);
+}
+
 function shouldRedirectToDashboard(){
-  if(!authService.isAuthenticated())
-    return false;
-  const pathname = routeService.getPathname();
-  return pathname == '/sign-up' || pathname == '/sign-in';
+  return isAuthenticated() && pathnameIsOneOf(['/sign-up', '/sign-in']);
+}
+
+function isAuthenticated(){
+  return authService.isAuthenticated();
+}
+
+function pathnameIsOneOf(paths){
+  return paths.includes(routeService.getPathname());
 }
 
 function buildTopbar(hideTopbar){

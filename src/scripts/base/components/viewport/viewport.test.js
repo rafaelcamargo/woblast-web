@@ -17,6 +17,7 @@ describe('Viewport', () => {
   beforeEach(() => {
     authService.isAuthenticated = jest.fn();
     routeService.go = jest.fn();
+    routeService.getPathname = jest.fn();
   });
 
   it('should have appropriate css class', () => {
@@ -55,10 +56,18 @@ describe('Viewport', () => {
     expect(routeService.go).not.toHaveBeenCalled();
   });
 
-  it('should not redirect to dashboard if user is not authenticated', () => {
+  it('should not redirect to dashboard if user is not authenticated and pathname is public', () => {
     authService.isAuthenticated = jest.fn();
+    routeService.getPathname = jest.fn(() => '/');
     const wrapper = mount();
     expect(routeService.go).not.toHaveBeenCalled();
+  });
+
+  it('should redirect to sign in if user is not authenticated and pathname is not public', () => {
+    authService.isAuthenticated = jest.fn();
+    routeService.getPathname = jest.fn(() => '/dashboard');
+    const wrapper = mount();
+    expect(routeService.go).toHaveBeenCalledWith('/sign-in');
   });
 
   it('should render some content', () => {
