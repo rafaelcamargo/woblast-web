@@ -1,3 +1,4 @@
+import routeService from '@scripts/base/services/route/route';
 import storageService from '@scripts/base/services/storage/storage';
 import userResource from '@scripts/user/resources/user/user';
 import authService from '@scripts/auth/services/auth/auth';
@@ -16,8 +17,10 @@ describe('Auth Service', () => {
 
   beforeEach(() => {
     userResource.findByEmail = jest.fn(email => mockUsers()[email]);
+    routeService.go = jest.fn();
     storageService.set = jest.fn();
     storageService.get = jest.fn();
+    storageService.remove = jest.fn();
   });
 
   it('should succeed auth if credentials are right', () => {
@@ -50,5 +53,11 @@ describe('Auth Service', () => {
   it('should look auth token on storage', () => {
     authService.isAuthenticated();
     expect(storageService.get).toHaveBeenCalledWith('w-auth-token', { isJSON: true });
+  });
+
+  it('should logout', () => {
+    authService.logout();
+    expect(storageService.remove).toHaveBeenCalledWith('w-auth-token');
+    expect(routeService.go).toHaveBeenCalledWith('/');
   });
 });

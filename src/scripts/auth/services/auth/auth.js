@@ -1,5 +1,6 @@
 import storageService from '@scripts/base/services/storage/storage';
 import userResource from '@scripts/user/resources/user/user';
+import routeService from '@scripts/base/services/route/route';
 
 const _public = {};
 
@@ -15,6 +16,11 @@ _public.auth = (email, password, onSuccess, onError) => {
 
 _public.isAuthenticated = () => {
   return storageService.get(getAuthTokenStorageKey(), { isJSON: true });
+};
+
+_public.logout = () => {
+  storageService.remove(getAuthTokenStorageKey());
+  routeService.go('/');
 };
 
 function saveAuthToken(user){
