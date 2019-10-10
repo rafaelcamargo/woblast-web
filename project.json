@@ -10,7 +10,6 @@
       "index": "src/scripts/app.js"
     },
     "dist": {
-      "root": "dist/assets/",
       "filename": {
         "prod": "assets/[name]-[hash].js",
         "dev": "assets/[name].js"
