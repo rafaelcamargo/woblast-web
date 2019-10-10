@@ -48,7 +48,7 @@ export class WAuthForm extends Component {
             <WCol size="12">
               <WField label="Email">
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   defaultValue={ this.state.email }
                   onChange={ this.onUserDataChange }
