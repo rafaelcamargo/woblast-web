@@ -1,5 +1,11 @@
 @require '_variables'
+@require '_mixins'
 
 .w-topbar
   padding 20px 0
   background-color $color-lightest
+  clearfix()
+  .w-logo
+    float left
+  .w-button
+    float right

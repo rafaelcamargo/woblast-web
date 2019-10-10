@@ -29,7 +29,7 @@ export class WHomeCover extends Component {
             </WRow>
             <WRow align="center" offset="4">
               <WCol size="12">
-                <Link to="/signin">
+                <Link to="/sign-in">
                   <WButton theme="primary">
                     Sign In
                   </WButton>
