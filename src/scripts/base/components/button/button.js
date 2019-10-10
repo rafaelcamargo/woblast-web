@@ -9,9 +9,19 @@ export class WButton extends Component {
       className: buildClassName(this.props)
     };
   }
+
+  handleClick = () => {
+    const { onClick } = this.props;
+    if(onClick)
+      onClick();
+  };
+
   render() {
     return (
-      <button type={ buildType(this.props.type) } className={ this.state.className }>
+      <button
+        type={ buildType(this.props.type) }
+        className={ this.state.className }
+        onClick={ this.handleClick }>
         { this.props.children }
       </button>
     );

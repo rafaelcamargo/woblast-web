@@ -5,7 +5,11 @@ import { WButton } from '@scripts/base/components/button/button';
 describe('Button', () => {
   function mount(props = {}){
     return shallow(
-      <WButton type={ props.type } theme={ props.theme } display={ props.display }>
+      <WButton
+        type={ props.type }
+        theme={ props.theme }
+        display={ props.display }
+        onClick={ props.onClick }>
         { props.content }
       </WButton>
     );
@@ -35,6 +39,20 @@ describe('Button', () => {
   it('should render a block button', () => {
     const wrapper = mount({ display: 'block' });
     expect(wrapper.prop('className').includes('w-button-block')).toEqual(true);
+  });
+
+  it('should execute click callback if callback has been provided', () => {
+    const onClick = jest.fn();
+    const wrapper = mount({ onClick });
+    wrapper.simulate('click');
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should not execute click callback if callback has not been provided', () => {
+    const onClick = jest.fn();
+    const wrapper = mount();
+    wrapper.simulate('click');
+    expect(onClick).not.toHaveBeenCalled();
   });
 
   it('should render some content', () => {
