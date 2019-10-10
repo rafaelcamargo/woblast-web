@@ -1,4 +1,3 @@
-@require '_variables'
 @require '_mixins'
 
 $loader-size = 50px
@@ -7,4 +6,7 @@ $loader-size = 50px
   margin 0 auto
   height $loader-size
   width $loader-size
+  background-size contain
+  background-position center
+  background-repeat no-repeat
   background-image('loader.svg')
