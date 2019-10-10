@@ -11,6 +11,7 @@ describe('Storage Service', () => {
   beforeEach(() => {
     localStorageService.set = jest.fn();
     localStorageService.get = jest.fn(key => mockStore()[key]);
+    localStorageService.remove = jest.fn();
   });
 
   it('should set string value', () => {
@@ -39,5 +40,10 @@ describe('Storage Service', () => {
   it('should return undefined if getting value by non existing key as JSON', () => {
     const value = storageService.get('cities', { isJSON: true });
     expect(value).not.toBeDefined();
+  });
+
+  it('should remove value', () => {
+    storageService.remove('cities');
+    expect(localStorageService.remove).toHaveBeenCalledWith('Y2l0aWVz');
   });
 });

@@ -12,6 +12,10 @@ _public.get = (key, { isJSON } = {}) => {
     return isJSON ? JSON.parse(decode(value)) : decode(value);
 };
 
+_public.remove = (key) => {
+  localStorageService.remove(encode(key));
+};
+
 function encode(value){
   return typeof value === 'string' ?
     window.btoa(value) :
