@@ -39,4 +39,11 @@ describe('Route Service', () => {
     routeService.init(historyMock);
     expect(routeService.getSearchParams('email')).toEqual('leo@email.com');
   });
+
+  it('should get pathname', () => {
+    const pathname = '/sign-up';
+    const historyMock = mockHistory({ pathname });
+    routeService.init(historyMock);
+    expect(routeService.getPathname()).toEqual(pathname);
+  });
 });

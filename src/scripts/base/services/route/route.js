@@ -15,6 +15,11 @@ _public.getSearchParams = param => {
   return param ? params[param] : params;
 };
 
+_public.getPathname = () => {
+  const { pathname } = _public.history.location;
+  return pathname;
+};
+
 function setHistory(history){
   _public.history = history;
 }
