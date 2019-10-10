@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { WCard } from '@scripts/base/components/card/card';
 import { WCol } from '@scripts/base/components/col/col';
 import { WContainer } from '@scripts/base/components/container/container';
-import { WLogo } from '@scripts/base/components/logo/logo';
+import { WLoader } from '@scripts/base/components/loader/loader';
 import { WRow } from '@scripts/base/components/row/row';
 import { WViewport } from '@scripts/base/components/viewport/viewport';
-import { WAuthForm } from '@scripts/auth/components/auth-form/auth-form';
+import { WFinanceCardList } from '@scripts/finance/components/finance-card-list/finance-card-list';
 
 export class Dashboard extends Component {
   render() {
@@ -15,7 +13,7 @@ export class Dashboard extends Component {
         <WContainer>
           <WRow>
             <WCol size="12">
-              <div>Hello!</div>
+              <WFinanceCardList />
             </WCol>
           </WRow>
         </WContainer>
