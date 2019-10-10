@@ -12,7 +12,13 @@ export class Dashboard extends Component {
   render() {
     return (
       <WViewport>
-        <div>Hello!</div>
+        <WContainer>
+          <WRow>
+            <WCol size="12">
+              <div>Hello!</div>
+            </WCol>
+          </WRow>
+        </WContainer>
       </WViewport>
     );
   }
