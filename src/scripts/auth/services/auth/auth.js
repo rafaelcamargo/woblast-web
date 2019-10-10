@@ -13,6 +13,10 @@ _public.auth = (email, password, onSuccess, onError) => {
   }
 };
 
+_public.isAuthenticated = () => {
+  return storageService.get(getAuthTokenStorageKey(), { isJSON: true });
+};
+
 function saveAuthToken(user){
   storageService.set(getAuthTokenStorageKey(), user);
 }
@@ -24,7 +28,7 @@ function isValidCredential(user, password){
 }
 
 function getAuthTokenStorageKey(){
-  return 'auth-token';
+  return 'w-auth-token';
 }
 
 export default _public;

@@ -17,6 +17,7 @@ describe('Auth Service', () => {
   beforeEach(() => {
     userResource.findByEmail = jest.fn(email => mockUsers()[email]);
     storageService.set = jest.fn();
+    storageService.get = jest.fn();
   });
 
   it('should succeed auth if credentials are right', () => {
@@ -43,6 +44,11 @@ describe('Auth Service', () => {
     const email = 'leo@email.com';
     const user = mockUsers()[email];
     authService.auth(email, '123', jest.fn());
-    expect(storageService.set).toHaveBeenCalledWith('auth-token', user);
+    expect(storageService.set).toHaveBeenCalledWith('w-auth-token', user);
+  });
+
+  it('should look auth token on storage', () => {
+    authService.isAuthenticated();
+    expect(storageService.get).toHaveBeenCalledWith('w-auth-token', { isJSON: true });
   });
 });
