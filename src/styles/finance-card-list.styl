@@ -1,0 +1,12 @@
+@require '_mixins'
+
+.w-finance-card-list
+  .w-requester-content
+    display grid
+    grid-template-columns 1fr 1fr 1fr 1fr
+    grid-gap 40px 40px
+
++breakpoint('xs')
+  .w-finance-card-list
+    .w-requester-content
+      grid-template-columns 1fr
