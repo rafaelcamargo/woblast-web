@@ -11,7 +11,7 @@ _public.get = () => {
 };
 
 function getUrl(){
-  return `${ENV.HG_BRASIL_API.BASE_URL}/finance?key=${ENV.HG_BRASIL_API.KEY}`;
+  return `${ENV.HG_BRASIL_API.BASE_URL}/finance?format=${ENV.HG_BRASIL_API.FORMAT}&key=${ENV.HG_BRASIL_API.KEY}`;
 }
 
 function parseData(response){

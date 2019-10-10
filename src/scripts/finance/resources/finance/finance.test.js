@@ -7,7 +7,7 @@ describe('Finance Resource', () => {
   it('should make a get request', () => {
     baseResource.get = jest.fn(() => new PromiseMock('success', { shouldAbortRequest: true }));
     financeResource.get();
-    expect(baseResource.get).toHaveBeenCalledWith('http://localhost:3000/finance?key=489e9445');
+    expect(baseResource.get).toHaveBeenCalledWith('http://localhost:3000/finance?format=json&key=489e9445');
   });
 
   it('should parse response data', () => {
