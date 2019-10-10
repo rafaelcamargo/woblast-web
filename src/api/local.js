@@ -1,3 +1,5 @@
+/* eslint no-undef: 0 */
+
 const ENV = require('../../environments/development.js');
 const axios = require('axios');
 const express = require('express');
@@ -14,9 +16,9 @@ app.get('/finance', (req, res) => {
   }, err => {
     const { data: { status } } = err.response;
     res.status(status).send(data);
-  })
+  });
 });
 
 app.listen(3000, () => {
-  console.log(`Local API Running on port 3000...`);
+  console.log('Local API Running on port 3000...');
 });
