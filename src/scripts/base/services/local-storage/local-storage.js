@@ -8,4 +8,8 @@ _public.get = key => {
   return window.localStorage.getItem(key);
 };
 
+_public.remove = key => {
+  return window.localStorage.removeItem(key);
+};
+
 export default _public;

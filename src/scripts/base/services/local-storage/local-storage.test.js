@@ -15,4 +15,10 @@ describe('Local Storage Service', () => {
     const value = localStorageService.get('email');
     expect(value).toEqual('some@email.com');
   });
+
+  it('should remove value', () => {
+    window.localStorage.setItem('email', 'some@email.com');
+    localStorageService.remove('email');
+    expect(window.localStorage.getItem('email')).toEqual(null);
+  });
 });
