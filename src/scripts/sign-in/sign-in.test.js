@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { WCard } from '@scripts/base/components/card/card';
 import { WCover } from '@scripts/base/components/cover/cover';
 import { WLogo } from '@scripts/base/components/logo/logo';
+import { WViewport } from '@scripts/base/components/viewport/viewport';
 import { WAuthForm } from '@scripts/auth/components/auth-form/auth-form';
 import { SignIn } from '@scripts/sign-in/sign-in';
 
@@ -13,6 +14,11 @@ describe('Sign In', () => {
       <SignIn />
     );
   }
+
+  it('should contain a viewport', () => {
+    const wrapper = mount();
+    expect(wrapper.find(WViewport).length).toEqual(1);
+  });
 
   it('should contain a cover', () => {
     const wrapper = mount();
