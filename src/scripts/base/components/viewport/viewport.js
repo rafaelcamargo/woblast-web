@@ -6,11 +6,15 @@ export class WViewport extends Component {
   render() {
     return (
       <div className="w-viewport">
-        <WTopbar />
+        { buildTopbar(this.props.hideTopbar) }
         <div className="w-viewport-content">
           { this.props.children }
         </div>
       </div>
     );
   }
+}
+
+function buildTopbar(hideTopbar){
+  return !hideTopbar ? <WTopbar /> : null;
 }
