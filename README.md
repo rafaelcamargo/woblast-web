@@ -23,17 +23,17 @@ cd woblast-web
 npm install
 ```
 
-5. If you want to just build the project, run:
+5. If you want just to build the project, run:
 ``` bash
 npm run build
 ```
 
-6. Otherwise, run:
+6. If you want to serve the application, run:
 ``` bash
 npm run start
 ```
 
-7. In order to consume API locally run in another terminal tab:
+7. In order to consume API locally, use another terminal tab to run:
 ``` bash
 npm run api
 ```
