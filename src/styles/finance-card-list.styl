@@ -5,6 +5,13 @@
     display grid
     grid-template-columns 1fr 1fr 1fr 1fr
     grid-gap 40px 40px
+  .w-finance-card
+    cursor pointer
+    .w-card
+      transition(all, 100ms)
+      +highlight()
+        padding 28px 30px 32px
+        border-bottom 2px solid alpha($color-grey, .5)
 
 +breakpoint('xs')
   .w-finance-card-list

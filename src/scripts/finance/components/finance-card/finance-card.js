@@ -3,9 +3,15 @@ import React, { Component } from 'react';
 import { WCard } from '@scripts/base/components/card/card';
 
 export class WFinanceCard extends Component {
+  handleClick = () => {
+    const { onClick } = this.props;
+    if(onClick)
+      onClick();
+  };
+
   render() {
     return (
-      <div className="w-finance-card">
+      <div className="w-finance-card" onClick={ this.handleClick }>
         <WCard title={ this.props.title }>
           <div
             className={ buildValueClassName(this.props.indexationValue, this.props.value) }

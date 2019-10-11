@@ -10,7 +10,8 @@ describe('Finance Card', () => {
         title={ props.title }
         value={ props.value }
         variation={ props.variation }
-        indexationValue={ props.indexationValue } />
+        indexationValue={ props.indexationValue }
+        onClick={ props.onClick } />
     );
   }
 
@@ -66,5 +67,19 @@ describe('Finance Card', () => {
     expect(valueElement.text()).toEqual('-1.345');
     expect(valueElement.prop('className').includes('w-finance-card-indexation')).toEqual(true);
     expect(valueElement.prop('className').includes('w-finance-card-indexation-negative')).toEqual(true);
+  });
+
+  it('should execute click callback if callback has been provided', () => {
+    const onClick = jest.fn();
+    const wrapper = mount({ onClick });
+    wrapper.simulate('click');
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should not execute click callback if callback has not been provided', () => {
+    const onClick = jest.fn();
+    const wrapper = mount();
+    wrapper.simulate('click');
+    expect(onClick).not.toHaveBeenCalled();
   });
 });
