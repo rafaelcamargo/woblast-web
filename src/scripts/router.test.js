@@ -2,11 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
-import { AppRouter } from './router';
-import { Home } from '@scripts/home/home';
 import WHistory from '@scripts/base/components/history/history';
+import { Dashboard } from '@scripts/dashboard/dashboard';
+import { Monitor } from '@scripts/monitor/monitor';
+import { Home } from '@scripts/home/home';
 import { SignIn } from '@scripts/sign-in/sign-in';
 import { SignUp } from '@scripts/sign-up/sign-up';
+import { AppRouter } from './router';
 
 describe('App Router', () => {
   function mount(){
@@ -43,5 +45,19 @@ describe('App Router', () => {
     const route = wrapper.find(ScrollToTop).children().at(2);
     expect(route.prop('path')).toEqual('/sign-in');
     expect(route.prop('component')).toEqual(SignIn);
+  });
+
+  it('should contain Dashboard route', () => {
+    const wrapper = mount();
+    const route = wrapper.find(ScrollToTop).children().at(3);
+    expect(route.prop('path')).toEqual('/dashboard');
+    expect(route.prop('component')).toEqual(Dashboard);
+  });
+
+  it('should contain Monitor route', () => {
+    const wrapper = mount();
+    const route = wrapper.find(ScrollToTop).children().at(4);
+    expect(route.prop('path')).toEqual('/monitor');
+    expect(route.prop('component')).toEqual(Monitor);
   });
 });
