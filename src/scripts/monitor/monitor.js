@@ -4,6 +4,7 @@ import { WContainer } from '@scripts/base/components/container/container';
 import { WLoader } from '@scripts/base/components/loader/loader';
 import { WRow } from '@scripts/base/components/row/row';
 import { WViewport } from '@scripts/base/components/viewport/viewport';
+import { WFinanceMonitorCard } from '@scripts/finance/components/finance-monitor-card/finance-monitor-card';
 
 export class Monitor extends Component {
   render() {
@@ -12,7 +13,7 @@ export class Monitor extends Component {
         <WContainer>
           <WRow>
             <WCol size="12">
-              <p>Monitor goes here</p>
+              <WFinanceMonitorCard />
             </WCol>
           </WRow>
         </WContainer>
