@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import financeResource from '@scripts/finance/resources/finance/finance';
+import routeService from '@scripts/base/services/route/route';
 import { WFinanceCard } from '@scripts/finance/components/finance-card/finance-card';
 import { WFinanceCardList } from '@scripts/finance/components/finance-card-list/finance-card-list';
 
@@ -50,5 +51,13 @@ describe('Finance Card List', () => {
     expect(wrapper.find(WFinanceCard).at(0).prop('value')).toEqual(4.1116);
     expect(wrapper.find(WFinanceCard).at(0).prop('variation')).toEqual(0.193);
     expect(wrapper.find(WFinanceCard).at(0).prop('indexationValue')).toEqual(undefined);
+  });
+
+  it('should go to monitor on finance card click', () => {
+    routeService.go = jest.fn();
+    const wrapper = mount();
+    wrapper.instance().onFetchSuccess(mockData());
+    wrapper.find(WFinanceCard).at(0).simulate('click');
+    expect(routeService.go).toHaveBeenCalledWith('/monitor?type=currencies&key=USD');
   });
 });

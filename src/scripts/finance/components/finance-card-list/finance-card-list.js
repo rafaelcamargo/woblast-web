@@ -1,6 +1,8 @@
 import '@styles/finance-card-list.styl';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import financeResource from '@scripts/finance/resources/finance/finance';
+import routeService from '@scripts/base/services/route/route';
 import { WRequester } from '@scripts/base/components/requester/requester';
 import { WFinanceCard } from '@scripts/finance/components/finance-card/finance-card';
 
@@ -36,6 +38,12 @@ function buildFinanceCards(items){
       value={ item.value }
       variation={ item.variation }
       indexationValue={ item.indexationValue }
+      onClick={ goToMonitor.bind(item) }
       key={ index } />;
   });
+}
+
+function goToMonitor(item){
+  const pathname = `/monitor?type=${this.type}&key=${this.key}`;
+  routeService.go(pathname);
 }
