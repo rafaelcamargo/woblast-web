@@ -4,13 +4,13 @@ import baseResource from '@scripts/base/resources/base/base';
 import financeResource from './finance';
 
 describe('Finance Resource', () => {
-  it('should make a get request', () => {
+  it('should get items', () => {
     baseResource.get = jest.fn(() => new PromiseMock('success', { shouldAbortRequest: true }));
     financeResource.get();
     expect(baseResource.get).toHaveBeenCalledWith('http://localhost:3000/finance?format=json&key=489e9445');
   });
 
-  it('should parse response data', () => {
+  it('should parse items on get', () => {
     const response = new FinanceResponseMock();
     baseResource.get = jest.fn(() => new PromiseMock('success', { response }));
     expect(financeResource.get()).toEqual([
@@ -73,9 +73,32 @@ describe('Finance Resource', () => {
     ]);
   });
 
-  it('should handle error', () => {
+  it('should handle error on get', () => {
     const err = { some: 'err' };
     baseResource.get = jest.fn(() => new PromiseMock('error', { err }));
     expect(financeResource.get()).toEqual(err);
+  });
+
+  it('should get a single item', done => {
+    const response = new FinanceResponseMock();
+    baseResource.get = jest.fn(() => Promise.resolve(response));
+    financeResource.getItem('stocks', 'IBOVESPA').then(item => {
+      expect(item).toEqual({
+        type: 'stocks',
+        key: 'IBOVESPA',
+        name: 'BM&F BOVESPA',
+        value: 1.27,
+        indexationValue: true
+      });
+      done();
+    });
+  });
+
+  it('should handle error on get item', () => {
+    const errorMock = { some: 'err' };
+    baseResource.get = jest.fn(() => Promise.reject(errorMock));
+    financeResource.get().then(() => {}, err => {
+      expect(err).toEqual(errorMock);
+    });
   });
 });

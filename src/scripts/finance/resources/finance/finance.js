@@ -10,6 +10,14 @@ _public.get = () => {
   }, err => err);
 };
 
+_public.getItem = (type, key) => {
+  return _public.get().then(items => {
+    return items.find(item => {
+      return item.type === type && item.key === key;
+    });
+  }, err => err);
+};
+
 function getUrl(){
   return `${ENV.HG_BRASIL_API.BASE_URL}/finance?format=${ENV.HG_BRASIL_API.FORMAT}&key=${ENV.HG_BRASIL_API.KEY}`;
 }
