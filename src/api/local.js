@@ -11,10 +11,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/finance', (req, res) => {
-  axios.get(`https://api.hgbrasil.com/finance?key=${ENV.HG_BRASIL_API.KEY}`).then(({ data }) => {
+  axios.get(`https://api.hgbrasil.com/finance?key=${ENV.HG_BRASIL_API.KEY}`).then(({ data } = {}) => {
     res.send(data);
   }, err => {
-    res.status(status).send(err);
+    res.send(err);
   });
 });
 
