@@ -36,6 +36,7 @@ function buildFinanceCards(items){
     return <WFinanceCard
       title={ item.name }
       value={ item.value }
+      valueSymbol={ item.valueSymbol }
       variation={ item.variation }
       indexationValue={ item.indexationValue }
       onClick={ goToMonitor.bind(item) }

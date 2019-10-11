@@ -5,6 +5,7 @@ module.exports = {
     KEY: '763811b2'
   },
   MONITOR: {
-    INTERVAL: 15000
+    INTERVAL: 15000,
+    MAX_POINTS: 20
   }
 };

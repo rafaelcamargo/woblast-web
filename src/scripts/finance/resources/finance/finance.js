@@ -24,10 +24,10 @@ function getUrl(){
 function parseData(response){
   const { data: { results } } = response;
   return [
-    parseItemData(results, 'currencies', 'USD', 'buy', { addVariation: true }),
-    parseItemData(results, 'currencies', 'EUR', 'buy', { addVariation: true }),
-    parseItemData(results, 'currencies', 'GBP', 'buy', { addVariation: true }),
-    parseItemData(results, 'currencies', 'BTC', 'buy', { addVariation: true }),
+    parseItemData(results, 'currencies', 'USD', 'buy', { addVariation: true, valueSymbol: 'R$' }),
+    parseItemData(results, 'currencies', 'EUR', 'buy', { addVariation: true, valueSymbol: 'R$' }),
+    parseItemData(results, 'currencies', 'GBP', 'buy', { addVariation: true, valueSymbol: 'R$' }),
+    parseItemData(results, 'currencies', 'BTC', 'buy', { addVariation: true, valueSymbol: 'R$' }),
     parseItemData(results, 'stocks', 'IBOVESPA', 'variation', { indexationValue: true }),
     parseItemData(results, 'stocks', 'NASDAQ', 'variation', { indexationValue: true }),
     parseItemData(results, 'stocks', 'CAC', 'variation', { indexationValue: true }),
@@ -42,12 +42,13 @@ function parseItemData(results, type, key, valueKey, opts){
     type,
     key,
     name,
+    indexationValue: opts.indexationValue,
     value: item[valueKey]
   };
   if(opts.addVariation)
     parsedItem.variation = variation;
-  if(opts.indexationValue)
-    parsedItem.indexationValue = opts.indexationValue;
+  if(opts.valueSymbol)
+    parsedItem.valueSymbol = opts.valueSymbol;
   return parsedItem;
 }
 

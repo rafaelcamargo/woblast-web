@@ -16,7 +16,10 @@ export class WFinanceCard extends Component {
           <div
             className={ buildValueClassName(this.props.indexationValue, this.props.value) }
             data-finance-card-value>
-            { this.props.value }
+            <span>
+              { buildValueSymbol(this.props.valueSymbol) }
+              { this.props.value }
+            </span>
           </div>
           { buildVariation(this.props.variation) }
         </WCard>
@@ -35,6 +38,14 @@ function buildValueClassName(indexationValue, value){
 function buildIndexationCssClasses(value){
   const baseCssClass = `${getCssClassPrefix()}-indexation`;
   return isNegative(value) ? `${baseCssClass} ${baseCssClass}-negative` : baseCssClass;
+}
+
+function buildValueSymbol(symbol){
+  return symbol ?
+    <span className="w-finance-card-value-symbol" data-finance-card-value-symbol>
+      { symbol }
+    </span> :
+    null;
 }
 
 function buildVariation(variation){
