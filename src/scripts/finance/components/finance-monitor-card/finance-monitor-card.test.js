@@ -74,7 +74,9 @@ describe('Finance Monitor Card', () => {
     const instance = wrapper.instance();
     instance.onFetchSuccess(mockItem());
     jest.advanceTimersByTime(5000);
-    expect(chartService.addPoint).toHaveBeenCalledWith(instance.chart, '09:30:05', 1.27);
+    expect(chartService.addPoint).toHaveBeenCalledWith(instance.chart, '09:30:05', 1.27, {
+      maxPoints: 6
+    });
   });
 
   it('should clear interval on component unmount', () => {

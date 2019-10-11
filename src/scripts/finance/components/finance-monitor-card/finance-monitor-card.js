@@ -80,7 +80,11 @@ function renderChart(containerElement, data){
 
 function scheduleChartUpgrade(chart){
   return setInterval(() => {
-    getItemData().then(data => chartService.addPoint(chart, buildChartLabel(), data.value));
+    getItemData().then(data => {
+      chartService.addPoint(chart, buildChartLabel(), data.value, {
+        maxPoints: ENV.MONITOR.MAX_POINTS
+      });
+    });
   }, ENV.MONITOR.INTERVAL);
 }
 
