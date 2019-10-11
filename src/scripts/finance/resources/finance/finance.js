@@ -1,4 +1,3 @@
-import { FinanceResponseMock } from '@scripts/finance/mocks/finance';
 import ENV from '@environment';
 import baseResource from '@scripts/base/resources/base/base';
 

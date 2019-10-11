@@ -96,8 +96,8 @@ describe('Finance Resource', () => {
 
   it('should handle error on get item', () => {
     const errorMock = { some: 'err' };
-    baseResource.get = jest.fn(() => Promise.reject(errorMock));
-    financeResource.get().then(() => {}, err => {
+    financeResource.get = jest.fn(() => Promise.reject(errorMock));
+    financeResource.getItem().then(() => {}, err => {
       expect(err).toEqual(errorMock);
     });
   });
