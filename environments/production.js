@@ -3,5 +3,8 @@ module.exports = {
     BASE_URL: 'https://api.hgbrasil.com',
     FORMAT: 'json-cors',
     KEY: '763811b2'
+  },
+  MONITOR: {
+    INTERVAL: 15000
   }
 };

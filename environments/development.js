@@ -3,5 +3,8 @@ module.exports = {
     BASE_URL: 'http://localhost:3000',
     FORMAT: 'json',
     KEY: '489e9445'
+  },
+  MONITOR: {
+    INTERVAL: 5000
   }
 };
