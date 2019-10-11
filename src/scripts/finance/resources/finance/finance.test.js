@@ -19,28 +19,36 @@ describe('Finance Resource', () => {
         key: 'USD',
         name: 'Dollar',
         value: 4.1037,
-        variation: 0.293
+        variation: 0.293,
+        indexationValue: undefined,
+        valueSymbol: 'R$'
       },
       {
         type: 'currencies',
         key: 'EUR',
         name: 'Euro',
         value: 4.5049,
-        variation: 0.406
+        variation: 0.406,
+        indexationValue: undefined,
+        valueSymbol: 'R$'
       },
       {
         type: 'currencies',
         key: 'GBP',
         name: 'Pound Sterling',
         value: 5.0249,
-        variation: 0.386
+        variation: 0.386,
+        indexationValue: undefined,
+        valueSymbol: 'R$'
       },
       {
         type: 'currencies',
         key: 'BTC',
         name: 'Bitcoin',
         value: 37318.024,
-        variation: -0.199
+        variation: -0.199,
+        indexationValue: undefined,
+        valueSymbol: 'R$'
       },
       {
         type: 'stocks',

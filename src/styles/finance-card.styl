@@ -1,10 +1,20 @@
 @require '_variables'
+@require '_mixins'
 
 .w-finance-card
   text-align center
 
 .w-finance-card-value
   font-size $font-size-xxl
+  span
+    position relative
+
+.w-finance-card-value-symbol
+  position absolute
+  top -10px
+  left -10px
+  font-size $font-size-xxs
+  transform('translateY(-50%)')
 
 .w-finance-card-indexation
   color $color-green

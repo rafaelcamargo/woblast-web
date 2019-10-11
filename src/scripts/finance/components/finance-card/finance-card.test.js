@@ -9,6 +9,7 @@ describe('Finance Card', () => {
       <WFinanceCard
         title={ props.title }
         value={ props.value }
+        valueSymbol={ props.valueSymbol }
         variation={ props.variation }
         indexationValue={ props.indexationValue }
         onClick={ props.onClick } />
@@ -38,6 +39,13 @@ describe('Finance Card', () => {
     const value = 4.478;
     const wrapper = mount({ value });
     expect(getValueElement(wrapper).text()).toEqual('4.478');
+  });
+
+  it('should render a value symbol', () => {
+    const value = 4.478;
+    const valueSymbol = 'R$';
+    const wrapper = mount({ value, valueSymbol });
+    expect(wrapper.find('[data-finance-card-value-symbol]').text()).toEqual(valueSymbol);
   });
 
   it('should not render variation by default', () => {
