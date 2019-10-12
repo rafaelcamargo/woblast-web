@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { WFinanceCardList } from '@scripts/finance/components/finance-card-list/finance-card-list';
 import { WViewport } from '@scripts/base/components/viewport/viewport';
-import { Dashboard } from '@scripts/dashboard/dashboard';
+import { Dashboard } from './dashboard';
 
 describe('Dashboard', () => {
   function mount(){
