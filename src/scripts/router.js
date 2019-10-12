@@ -5,8 +5,8 @@ import { Home } from '@scripts/home/home';
 import WHistory from '@scripts/base/components/history/history';
 import { Dashboard } from '@scripts/dashboard/dashboard';
 import { Monitor } from '@scripts/monitor/monitor';
-import { SignUp } from '@scripts/sign-up/sign-up';
-import { SignIn } from '@scripts/sign-in/sign-in';
+import { SignIn } from '@scripts/user/views/sign-in/sign-in';
+import { SignUp } from '@scripts/user/views/sign-up/sign-up';
 
 export class AppRouter extends Component {
   render(){

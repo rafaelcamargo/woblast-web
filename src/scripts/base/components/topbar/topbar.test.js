@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import authService from '@scripts/auth/services/auth/auth';
+import userAuthService from '@scripts/user/services/user-auth/user-auth';
 import { Link } from 'react-router-dom';
 import { WButton } from '@scripts/base/components/button/button';
 import { WLogo } from '@scripts/base/components/logo/logo';
@@ -14,7 +14,7 @@ describe('Topbar', () => {
   }
 
   beforeEach(() => {
-    authService.logout = jest.fn();
+    userAuthService.logout = jest.fn();
   });
 
   it('should have appropriate css class', () => {
@@ -31,6 +31,6 @@ describe('Topbar', () => {
   it('should logout on logout button click', () => {
     const wrapper = mount();
     wrapper.find(WButton).simulate('click');
-    expect(authService.logout).toHaveBeenCalled();
+    expect(userAuthService.logout).toHaveBeenCalled();
   });
 });

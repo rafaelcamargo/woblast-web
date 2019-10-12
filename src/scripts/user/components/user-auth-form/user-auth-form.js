@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import authService from '@scripts/auth/services/auth/auth';
+import useruserAuthService from '@scripts/user/services/user-auth/user-auth';
 import domService from '@scripts/base/services/dom/dom';
 import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
@@ -9,7 +9,7 @@ import { WField } from '@scripts/base/components/field/field';
 import { WForm } from '@scripts/base/components/form/form';
 import { WRow } from '@scripts/base/components/row/row';
 
-export class WAuthForm extends Component {
+export class WUserAuthForm extends Component {
   constructor(props){
     super(props);
     this.initialEmail = getInitialEmail();
@@ -24,7 +24,7 @@ export class WAuthForm extends Component {
 
   signIn = () => {
     const { email, password } = this.state;
-    authService.auth(email, password, () => {
+    useruserAuthService.auth(email, password, () => {
       routeService.go('/dashboard');
     }, err => {
       this.setErrorMessage(err);
@@ -42,7 +42,7 @@ export class WAuthForm extends Component {
 
   render() {
     return (
-      <div className="w-auth-form">
+      <div className="w-user-auth-form">
         <WForm onSubmit={ this.signIn } errorMessage={ this.state.errorMessage }>
           <WRow>
             <WCol size="12">
