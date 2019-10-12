@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { WCard } from '@scripts/base/components/card/card';
 import { WCover } from '@scripts/base/components/cover/cover';
 import { WLogo } from '@scripts/base/components/logo/logo';
+import { WUserForm } from '@scripts/user/components/user-form/user-form';
 import { WViewport } from '@scripts/base/components/viewport/viewport';
-import { WAuthForm } from '@scripts/auth/components/auth-form/auth-form';
-import { SignIn } from '@scripts/sign-in/sign-in';
+import { SignUp } from './sign-up';
 
-describe('Sign In', () => {
+describe('Sign Up', () => {
   function mount(){
     return shallow(
-      <SignIn />
+      <SignUp />
     );
   }
 
@@ -35,13 +35,13 @@ describe('Sign In', () => {
     expect(wrapper.find(WCard).length).toEqual(1);
   });
 
-  it('should contain an auth form', () => {
+  it('should contain a user form', () => {
     const wrapper = mount();
-    expect(wrapper.find(WAuthForm).length).toEqual(1);
+    expect(wrapper.find(WUserForm).length).toEqual(1);
   });
 
-  it('should contain a link to sign up', () => {
+  it('should contain a link to sign in', () => {
     const wrapper = mount();
-    expect(wrapper.find(Link).prop('to')).toEqual('/sign-up');
+    expect(wrapper.find(Link).prop('to')).toEqual('/sign-in');
   });
 });

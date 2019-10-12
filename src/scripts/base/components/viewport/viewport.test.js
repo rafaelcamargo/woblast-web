@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import authService from '@scripts/auth/services/auth/auth';
+import userAuthService from '@scripts/user/services/user-auth/user-auth';
 import routeService from '@scripts/base/services/route/route';
 import { WTopbar } from '@scripts/base/components/topbar/topbar';
 import { WViewport } from '@scripts/base/components/viewport/viewport';
@@ -15,7 +15,7 @@ describe('Viewport', () => {
   }
 
   beforeEach(() => {
-    authService.isAuthenticated = jest.fn();
+    userAuthService.isAuthenticated = jest.fn();
     routeService.go = jest.fn();
     routeService.getPathname = jest.fn();
   });
@@ -36,35 +36,35 @@ describe('Viewport', () => {
   });
 
   it('should redirect to dashboard if user is authenticated and sign up is the pathname', () => {
-    authService.isAuthenticated = jest.fn(() => true);
+    userAuthService.isAuthenticated = jest.fn(() => true);
     routeService.getPathname = jest.fn(() => '/sign-up');
     const wrapper = mount();
     expect(routeService.go).toHaveBeenCalledWith('/dashboard');
   });
 
   it('should redirect to dashboard if user is authenticated and sign in is the pathname', () => {
-    authService.isAuthenticated = jest.fn(() => true);
+    userAuthService.isAuthenticated = jest.fn(() => true);
     routeService.getPathname = jest.fn(() => '/sign-in');
     const wrapper = mount();
     expect(routeService.go).toHaveBeenCalledWith('/dashboard');
   });
 
   it('should not redirect to dashboard if user is authenticated and pathname is not sign up nor sign in', () => {
-    authService.isAuthenticated = jest.fn(() => true);
+    userAuthService.isAuthenticated = jest.fn(() => true);
     routeService.getPathname = jest.fn(() => '/dashboard');
     const wrapper = mount();
     expect(routeService.go).not.toHaveBeenCalled();
   });
 
   it('should not redirect to dashboard if user is not authenticated and pathname is public', () => {
-    authService.isAuthenticated = jest.fn();
+    userAuthService.isAuthenticated = jest.fn();
     routeService.getPathname = jest.fn(() => '/');
     const wrapper = mount();
     expect(routeService.go).not.toHaveBeenCalled();
   });
 
   it('should redirect to sign in if user is not authenticated and pathname is not public', () => {
-    authService.isAuthenticated = jest.fn();
+    userAuthService.isAuthenticated = jest.fn();
     routeService.getPathname = jest.fn(() => '/dashboard');
     const wrapper = mount();
     expect(routeService.go).toHaveBeenCalledWith('/sign-in');

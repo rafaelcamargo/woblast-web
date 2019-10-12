@@ -1,6 +1,6 @@
 import '@styles/topbar.styl';
 import React, { Component } from 'react';
-import authService from '@scripts/auth/services/auth/auth';
+import userAuthService from '@scripts/user/services/user-auth/user-auth';
 import { Link } from 'react-router-dom';
 import { WButton } from '@scripts/base/components/button/button';
 import { WCol } from '@scripts/base/components/col/col';
@@ -11,7 +11,7 @@ import { WRow } from '@scripts/base/components/row/row';
 export class WTopbar extends Component {
 
   logout = () => {
-    authService.logout();
+    userAuthService.logout();
   };
 
   render() {

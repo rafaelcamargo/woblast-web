@@ -3,11 +3,11 @@ import { shallow } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 import WHistory from '@scripts/base/components/history/history';
-import { Dashboard } from '@scripts/dashboard/dashboard';
-import { Monitor } from '@scripts/monitor/monitor';
+import { Dashboard } from '@scripts/finance/views/dashboard/dashboard';
+import { Monitor } from '@scripts/finance/views/monitor/monitor';
 import { Home } from '@scripts/home/home';
-import { SignIn } from '@scripts/sign-in/sign-in';
-import { SignUp } from '@scripts/sign-up/sign-up';
+import { SignIn } from '@scripts/user/views/sign-in/sign-in';
+import { SignUp } from '@scripts/user/views/sign-up/sign-up';
 import { AppRouter } from './router';
 
 describe('App Router', () => {

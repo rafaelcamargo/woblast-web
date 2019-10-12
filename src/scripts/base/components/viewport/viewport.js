@@ -1,6 +1,6 @@
 import '@styles/viewport.styl';
 import React, { Component } from 'react';
-import authService from '@scripts/auth/services/auth/auth';
+import userAuthService from '@scripts/user/services/user-auth/user-auth';
 import routeService from '@scripts/base/services/route/route';
 import { WTopbar } from '@scripts/base/components/topbar/topbar';
 
@@ -33,7 +33,7 @@ function shouldRedirectToDashboard(){
 }
 
 function isAuthenticated(){
-  return authService.isAuthenticated();
+  return userAuthService.isAuthenticated();
 }
 
 function pathnameIsOneOf(paths){

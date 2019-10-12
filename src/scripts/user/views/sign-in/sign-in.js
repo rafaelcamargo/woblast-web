@@ -7,7 +7,7 @@ import { WCover } from '@scripts/base/components/cover/cover';
 import { WLogo } from '@scripts/base/components/logo/logo';
 import { WRow } from '@scripts/base/components/row/row';
 import { WViewport } from '@scripts/base/components/viewport/viewport';
-import { WAuthForm } from '@scripts/auth/components/auth-form/auth-form';
+import { WUserAuthForm } from '@scripts/user/components/user-auth-form/user-auth-form';
 
 export class SignIn extends Component {
   render() {
@@ -25,7 +25,7 @@ export class SignIn extends Component {
                 <WRow>
                   <WCol size="12">
                     <WCard>
-                      <WAuthForm />
+                      <WUserAuthForm />
                     </WCard>
                   </WCol>
                 </WRow>

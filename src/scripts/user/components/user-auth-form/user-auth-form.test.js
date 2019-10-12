@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import authService from '@scripts/auth/services/auth/auth';
+import useruserAuthService from '@scripts/user/services/user-auth/user-auth';
 import domService from '@scripts/base/services/dom/dom';
 import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
 import { WForm } from '@scripts/base/components/form/form';
-import { WAuthForm } from '@scripts/auth/components/auth-form/auth-form';
+import { WUserAuthForm } from './user-auth-form';
 
 describe('User Form', () => {
   function mount(props = {}){
     return shallow(
-      <WAuthForm />
+      <WUserAuthForm />
     );
   }
 
@@ -28,7 +28,7 @@ describe('User Form', () => {
 
   it('should have appropriate css class', () => {
     const wrapper = mount();
-    expect(wrapper.prop('className')).toEqual('w-auth-form');
+    expect(wrapper.prop('className')).toEqual('w-user-auth-form');
   });
 
   it('should contain a form', () => {
@@ -51,21 +51,21 @@ describe('User Form', () => {
   });
 
   it('should authenticate a user', () => {
-    authService.auth = jest.fn((email, password, onSuccess) => onSuccess());
+    useruserAuthService.auth = jest.fn((email, password, onSuccess) => onSuccess());
     const email = 'leo@email.com';
     const password = '123';
     const wrapper = mount();
     fillInput(wrapper, 'email', email);
     fillInput(wrapper, 'password', password);
     wrapper.instance().signIn();
-    expect(authService.auth.mock.calls[0][0]).toEqual(email);
-    expect(authService.auth.mock.calls[0][1]).toEqual(password);
+    expect(useruserAuthService.auth.mock.calls[0][0]).toEqual(email);
+    expect(useruserAuthService.auth.mock.calls[0][1]).toEqual(password);
     expect(routeService.go).toHaveBeenCalledWith('/dashboard');
   });
 
   it('should fail to authenticate if email has not been found', () => {
     const errorMessage = 'some error message';
-    authService.auth = jest.fn((email, password, onSuccess, onError) => onError(errorMessage));
+    useruserAuthService.auth = jest.fn((email, password, onSuccess, onError) => onError(errorMessage));
     const wrapper = mount();
     wrapper.instance().signIn();
     expect(wrapper.find(WForm).prop('errorMessage')).toEqual(errorMessage);
