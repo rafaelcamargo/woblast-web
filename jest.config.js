@@ -19,6 +19,7 @@ module.exports = {
     '^.+\\.css$': '<rootDir>/src/scripts/base/mocks/raw-files.js'
   },
   setupFilesAfterEnv: ['<rootDir>/src/scripts/base/mocks/global.js'],
+  testPathIgnorePatterns: ['cypress/'],
   transform: {
     '^.+\\.(png|styl)$': '<rootDir>/src/scripts/base/mocks/raw-files.js',
     '^.+\\.js$': 'babel-jest'

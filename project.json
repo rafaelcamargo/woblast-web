@@ -2,6 +2,10 @@
   "index": {
     "source": {
       "file": "src/index.html"
+    },
+    "dist": {
+      "root": "./dist",
+      "file": "./dist/index.html"
     }
   },
   "scripts": {
@@ -49,5 +53,9 @@
     "source": {
       "root": "environments"
     }
+  },
+  "server": {
+    "port": 9000,
+    "host": "0.0.0.0"
   }
 }

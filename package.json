@@ -4,11 +4,13 @@
   "description": "An experimental project to get started with HG Brasil Finance API and ChartJS",
   "main": "src/scripts/app.js",
   "scripts": {
-    "build": "webpack",
+    "build": "rm -rf ./dist && webpack",
     "format": "eslint ./src/**/*.js",
     "start": "webpack-dev-server",
     "api": "node ./src/api/local.js",
     "test": "jest",
+    "test:e2e": "cypress run",
+    "test:e2e:ci": "start-server-and-test start http://localhost:9000 test:e2e",
     "deploy": "firebase deploy --non-interactive"
   },
   "repository": {
@@ -51,6 +53,7 @@
     "jest-canvas-mock": "^2.1.2",
     "mini-css-extract-plugin": "^0.8.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "start-server-and-test": "^1.10.6",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "terser-webpack-plugin": "^2.0.1",
