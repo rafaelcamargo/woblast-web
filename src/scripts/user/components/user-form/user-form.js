@@ -38,7 +38,7 @@ export class WUserForm extends Component {
 
   render() {
     return (
-      <div className="w-user-form">
+      <div className="w-user-form" data-user-form>
         <WForm onSubmit={ this.save } errorMessage={ this.state.errorMessage }>
           <WRow>
             <WCol size="12">

@@ -31,7 +31,9 @@ export class SignIn extends Component {
                 </WRow>
                 <WRow align="center">
                   <WCol size="12">
-                    <p>Don't have an account? <Link to='/sign-up'>Sign up</Link>.</p>
+                    <p>
+                      Don't have an account? <Link to='/sign-up'>Sign up</Link>.
+                    </p>
                   </WCol>
                 </WRow>
               </WCol>
