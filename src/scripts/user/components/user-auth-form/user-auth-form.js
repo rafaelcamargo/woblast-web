@@ -42,7 +42,7 @@ export class WUserAuthForm extends Component {
 
   render() {
     return (
-      <div className="w-user-auth-form">
+      <div className="w-user-auth-form" data-user-auth-form>
         <WForm onSubmit={ this.signIn } errorMessage={ this.state.errorMessage }>
           <WRow>
             <WCol size="12">

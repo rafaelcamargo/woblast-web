@@ -4,7 +4,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: circleci/node:12-browsers
 
     steps:
       - checkout
@@ -20,21 +20,27 @@ jobs:
           command: npm install
 
       - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.npm
+            - ~/.cache/Cypress
 
       - run:
           name: Format
           command: npm run format
 
       - run:
-          name: Build
-          command: NODE_ENV=production npm run build
+          name: Test Unit
+          command: npm run test -- --maxWorkers=2 --coverage --coverageReporters=lcov && ./node_modules/codecov/bin/codecov
 
       - run:
-          name: Test
-          command: npm run test -- --maxWorkers=2 --coverage --coverageReporters=lcov && ./node_modules/codecov/bin/codecov
+          name: Test E2E
+          command: npx cypress install && npm run test:e2e:ci
+
+      - run:
+          name: Build
+          command: NODE_ENV=production npm run build
 
       - run:
           name: Deploy

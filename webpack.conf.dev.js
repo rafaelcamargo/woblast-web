@@ -26,7 +26,7 @@ module.exports = {
         }
       ]
     },
-    port: 9000,
-    host: '0.0.0.0'
+    port: project.server.port,
+    host: project.server.host
   }
 }
