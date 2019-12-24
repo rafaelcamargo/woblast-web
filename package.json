@@ -7,7 +7,7 @@
     "build": "webpack",
     "format": "eslint ./src/**/*.js",
     "start": "webpack-dev-server",
-    "api": "node ./src/api/local.js",
+    "api": "node ./api/local.js",
     "test": "jest",
     "deploy": "firebase deploy --non-interactive"
   },
