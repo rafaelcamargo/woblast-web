@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import propBasedCssClassService from '@scripts/base/services/prop-based-css/prop-based-css';
 import rangeService from '@scripts/base/services/range/range';
 
-export class WCol extends Component {
+export class Col extends Component {
   constructor(props){
     super(props);
     this.state = { className: buildClassName(props) };

@@ -2,13 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
-import { WForm } from '@scripts/base/components/form/form';
-import { WUserForm } from '@scripts/user/components/user-form/user-form';
+import { Form } from '@scripts/base/components/form/form';
+import { UserForm } from '@scripts/user/components/user-form/user-form';
 
 describe('User Form', () => {
   function mount(props = {}){
     return shallow(
-      <WUserForm />
+      <UserForm />
     );
   }
 
@@ -29,7 +29,7 @@ describe('User Form', () => {
 
   it('should contain a form', () => {
     const wrapper = mount();
-    expect(wrapper.find(WForm).length).toEqual(1);
+    expect(wrapper.find(Form).length).toEqual(1);
   });
 
   it('should save a user', () => {
@@ -63,7 +63,7 @@ describe('User Form', () => {
     userResource.save = jest.fn((user, onSuccess, onError) => onError(errorMessage));
     const wrapper = mount();
     wrapper.instance().save();
-    expect(wrapper.find(WForm).prop('errorMessage')).toEqual(errorMessage);
+    expect(wrapper.find(Form).prop('errorMessage')).toEqual(errorMessage);
   });
 
   it('should delete set error message on save', () => {
@@ -72,6 +72,6 @@ describe('User Form', () => {
     const instance = wrapper.instance()
     instance.setErrorMessage('err');
     instance.save();
-    expect(wrapper.find(WForm).prop('errorMessage')).toEqual(null);
+    expect(wrapper.find(Form).prop('errorMessage')).toEqual(null);
   });
 });

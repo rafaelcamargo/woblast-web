@@ -5,15 +5,15 @@ import chartService from '@scripts/base/services/chart/chart';
 import dateService from '@scripts/base/services/date/date';
 import financeResource from '@scripts/finance/resources/finance/finance';
 import routeService from '@scripts/base/services/route/route';
-import { WCard } from '@scripts/base/components/card/card';
-import { WFinanceMonitorCard } from '@scripts/finance/components/finance-monitor-card/finance-monitor-card';
+import { Card } from '@scripts/base/components/card/card';
+import { FinanceMonitorCard } from '@scripts/finance/components/finance-monitor-card/finance-monitor-card';
 
 jest.useFakeTimers();
 
 describe('Finance Monitor Card', () => {
   function mount(props = {}){
     return shallow(
-      <WFinanceMonitorCard />
+      <FinanceMonitorCard />
     );
   }
 
@@ -44,7 +44,7 @@ describe('Finance Monitor Card', () => {
     const title = 'Monitoring BM&F BOVESPA every 5s';
     const wrapper = mount();
     wrapper.instance().onFetchSuccess(mockItem());
-    expect(wrapper.find(WCard).prop('title')).toEqual(title);
+    expect(wrapper.find(Card).prop('title')).toEqual(title);
   });
 
   it('should render chart on fetch success', () => {

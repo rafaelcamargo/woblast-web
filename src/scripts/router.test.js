@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
-import WHistory from '@scripts/base/components/history/history';
+import History from '@scripts/base/components/history/history';
 import { Dashboard } from '@scripts/finance/views/dashboard/dashboard';
 import { Monitor } from '@scripts/finance/views/monitor/monitor';
 import { Home } from '@scripts/home/home';
@@ -22,7 +22,7 @@ describe('App Router', () => {
 
   it('should contain a History', () => {
     const wrapper = mount();
-    expect(wrapper.find(WHistory).length).toEqual(1);
+    expect(wrapper.find(History).length).toEqual(1);
   });
 
   it('should contain Home route', () => {

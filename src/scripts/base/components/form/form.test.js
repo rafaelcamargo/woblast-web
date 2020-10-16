@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WAlert } from '@scripts/base/components/alert/alert';
-import { WForm } from '@scripts/base/components/form/form';
+import { Alert } from '@scripts/base/components/alert/alert';
+import { Form } from '@scripts/base/components/form/form';
 
 describe('Form', () => {
   function mount(props = {}){
     return shallow(
-      <WForm onSubmit={ props.onSubmit } errorMessage={ props.errorMessage }>
+      <Form onSubmit={ props.onSubmit } errorMessage={ props.errorMessage }>
         { props.content }
-      </WForm>
+      </Form>
     );
   }
 
@@ -30,7 +30,7 @@ describe('Form', () => {
   it('should show error message', () => {
     const errorMessage = 'err';
     const wrapper = mount({ errorMessage });
-    expect(wrapper.find(WAlert).prop('theme')).toEqual('danger');
-    expect(wrapper.find(WAlert).childAt(0).text()).toEqual('err');
+    expect(wrapper.find(Alert).prop('theme')).toEqual('danger');
+    expect(wrapper.find(Alert).childAt(0).text()).toEqual('err');
   });
 });

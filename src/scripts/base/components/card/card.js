@@ -1,8 +1,8 @@
 import '@styles/card.styl';
 import React, { Component } from 'react';
-import { WLoader } from '@scripts/base/components/loader/loader';
+import { Loader } from '@scripts/base/components/loader/loader';
 
-export class WCard extends Component {
+export class Card extends Component {
   constructor(props){
     super(props);
     this.state = {};
@@ -25,12 +25,12 @@ export class WCard extends Component {
     this.setLoaderVisibility(false);
   }
   setLoaderVisibility(shouldShow){
-    this.setState({ shouldShowLoader: shouldShow });
+    this.setState({ shouldShoLoader: shouldShow });
   }
   render() {
     return (
       <div className="w-card">
-        { buildLoader(this.state.shouldShowLoader) }
+        { buildLoader(this.state.shouldShoLoader) }
         { buildTitle(this.props.title) }
         <div className="w-card-content">
           { this.props.children }
@@ -41,7 +41,7 @@ export class WCard extends Component {
 }
 
 function buildLoader(shouldShow){
-  return shouldShow ? <div className="w-card-loader"><WLoader /></div> : null;
+  return shouldShow ? <div className="w-card-loader"><Loader /></div> : null;
 }
 
 function buildTitle(title){

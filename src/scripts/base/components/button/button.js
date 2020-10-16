@@ -2,7 +2,7 @@ import '@styles/button.styl';
 import React, { Component } from 'react';
 import propBasedCssClassService from '@scripts/base/services/prop-based-css/prop-based-css';
 
-export class WButton extends Component {
+export class Button extends Component {
   constructor(props){
     super(props);
     this.state = {

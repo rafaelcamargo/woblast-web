@@ -2,15 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import userAuthService from '@scripts/user/services/user-auth/user-auth';
 import routeService from '@scripts/base/services/route/route';
-import { WTopbar } from '@scripts/base/components/topbar/topbar';
-import { WViewport } from '@scripts/base/components/viewport/viewport';
+import { Topbar } from '@scripts/base/components/topbar/topbar';
+import { Viewport } from '@scripts/base/components/viewport/viewport';
 
 describe('Viewport', () => {
   function mount(props = {}){
     return shallow(
-      <WViewport hideTopbar={ props.hideTopbar }>
+      <Viewport hideTopbar={ props.hideTopbar }>
         { props.content }
-      </WViewport>
+      </Viewport>
     );
   }
 
@@ -27,12 +27,12 @@ describe('Viewport', () => {
 
   it('should contain a topbar', () => {
     const wrapper = mount();
-    expect(wrapper.find(WTopbar).length).toEqual(1);
+    expect(wrapper.find(Topbar).length).toEqual(1);
   });
 
   it('should optionally hide topbar', () => {
     const wrapper = mount({ hideTopbar: true });
-    expect(wrapper.find(WTopbar).length).toEqual(0);
+    expect(wrapper.find(Topbar).length).toEqual(0);
   });
 
   it('should redirect to dashboard if user is authenticated and sign up is the pathname', () => {

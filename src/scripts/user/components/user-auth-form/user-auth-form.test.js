@@ -4,13 +4,13 @@ import useruserAuthService from '@scripts/user/services/user-auth/user-auth';
 import domService from '@scripts/base/services/dom/dom';
 import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
-import { WForm } from '@scripts/base/components/form/form';
-import { WUserAuthForm } from './user-auth-form';
+import { Form } from '@scripts/base/components/form/form';
+import { UserAuthForm } from './user-auth-form';
 
 describe('User Form', () => {
   function mount(props = {}){
     return shallow(
-      <WUserAuthForm />
+      <UserAuthForm />
     );
   }
 
@@ -33,7 +33,7 @@ describe('User Form', () => {
 
   it('should contain a form', () => {
     const wrapper = mount();
-    expect(wrapper.find(WForm).length).toEqual(1);
+    expect(wrapper.find(Form).length).toEqual(1);
   });
 
   it('should fill email on initialization if initial email has been defined on url', () => {
@@ -68,6 +68,6 @@ describe('User Form', () => {
     useruserAuthService.auth = jest.fn((email, password, onSuccess, onError) => onError(errorMessage));
     const wrapper = mount();
     wrapper.instance().signIn();
-    expect(wrapper.find(WForm).prop('errorMessage')).toEqual(errorMessage);
+    expect(wrapper.find(Form).prop('errorMessage')).toEqual(errorMessage);
   });
 });

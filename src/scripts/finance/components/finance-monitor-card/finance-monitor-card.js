@@ -5,9 +5,9 @@ import chartService from '@scripts/base/services/chart/chart';
 import dateService from '@scripts/base/services/date/date';
 import financeResource from '@scripts/finance/resources/finance/finance';
 import routeService from '@scripts/base/services/route/route';
-import { WCard } from '@scripts/base/components/card/card';
+import { Card } from '@scripts/base/components/card/card';
 
-export class WFinanceMonitorCard extends Component {
+export class FinanceMonitorCard extends Component {
   constructor(props){
     super(props);
     this.chartContainerRef = React.createRef();
@@ -36,7 +36,7 @@ export class WFinanceMonitorCard extends Component {
   render() {
     return (
       <div className="w-finance-monitor-card">
-        <WCard
+        <Card
           title={ this.state.cardTitle }
           onFetch={ this.onFetch }
           onFetchSuccess={ this.onFetchSuccess }>
@@ -45,7 +45,7 @@ export class WFinanceMonitorCard extends Component {
             height="300"
             ref={ this.chartContainerRef }>
           </canvas>
-        </WCard>
+        </Card>
       </div>
     );
   }

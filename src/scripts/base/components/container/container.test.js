@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WContainer } from '@scripts/base/components/container/container';
+import { Container } from '@scripts/base/components/container/container';
 
 describe('Container', () => {
   function mount(){
     return shallow(
-      <WContainer />
+      <Container />
     );
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { PromiseMock } from '@scripts/base/mocks/promise';
-import { WLoader } from '@scripts/base/components/loader/loader';
+import { Loader } from '@scripts/base/components/loader/loader';
 import { WRequester } from '@scripts/base/components/requester/requester';
 
 describe('Requester', () => {
@@ -37,7 +37,7 @@ describe('Requester', () => {
   it('should show loader on fetch', () => {
     const onFetch = jest.fn(() => new PromiseMock('success', { shouldAbortRequest: true }));
     const wrapper = mount({ onFetch });
-    expect(wrapper.find(WLoader).length).toEqual(1);
+    expect(wrapper.find(Loader).length).toEqual(1);
   });
 
   it('should hide content on fetch', () => {
@@ -52,7 +52,7 @@ describe('Requester', () => {
     const onFetchSuccess = jest.fn();
     const wrapper = mount({ onFetch, onFetchSuccess });
     expect(onFetchSuccess).toHaveBeenCalledWith(response);
-    expect(wrapper.find(WLoader).length).toEqual(0);
+    expect(wrapper.find(Loader).length).toEqual(0);
   });
 
   it('should execute fetch error callback on fetch error', () => {
@@ -61,7 +61,7 @@ describe('Requester', () => {
     const onFetchError = jest.fn();
     const wrapper = mount({ onFetch, onFetchError });
     expect(onFetchError).toHaveBeenCalledWith(err);
-    expect(wrapper.find(WLoader).length).toEqual(0);
+    expect(wrapper.find(Loader).length).toEqual(0);
   });
 
   it('should show content on fetch complete', () => {

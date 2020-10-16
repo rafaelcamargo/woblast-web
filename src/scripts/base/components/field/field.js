@@ -1,7 +1,7 @@
 import '@styles/field.styl';
 import React, { Component } from 'react';
 
-export class WField extends Component {
+export class Field extends Component {
   render() {
     return (
       <div className="w-field">

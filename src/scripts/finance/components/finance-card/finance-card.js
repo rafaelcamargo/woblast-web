@@ -1,8 +1,8 @@
 import '@styles/finance-card.styl';
 import React, { Component } from 'react';
-import { WCard } from '@scripts/base/components/card/card';
+import { Card } from '@scripts/base/components/card/card';
 
-export class WFinanceCard extends Component {
+export class FinanceCard extends Component {
   handleClick = () => {
     const { onClick } = this.props;
     if(onClick)
@@ -12,7 +12,7 @@ export class WFinanceCard extends Component {
   render() {
     return (
       <div className="w-finance-card" onClick={ this.handleClick }>
-        <WCard title={ this.props.title }>
+        <Card title={ this.props.title }>
           <div
             className={ buildValueClassName(this.props.indexationValue, this.props.value) }
             data-finance-card-value>
@@ -22,7 +22,7 @@ export class WFinanceCard extends Component {
             </span>
           </div>
           { buildVariation(this.props.variation) }
-        </WCard>
+        </Card>
       </div>
     );
   }

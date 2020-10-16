@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WLogo } from '@scripts/base/components/logo/logo';
+import { Logo } from '@scripts/base/components/logo/logo';
 
 describe('Logo', () => {
   function mount(){
     return shallow(
-      <WLogo />
+      <Logo />
     );
   }
 

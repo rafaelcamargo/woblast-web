@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
-import { WButton } from '@scripts/base/components/button/button';
-import { WCol } from '@scripts/base/components/col/col';
-import { WField } from '@scripts/base/components/field/field';
-import { WForm } from '@scripts/base/components/form/form';
-import { WRow } from '@scripts/base/components/row/row';
+import { Button } from '@scripts/base/components/button/button';
+import { Col } from '@scripts/base/components/col/col';
+import { Field } from '@scripts/base/components/field/field';
+import { Form } from '@scripts/base/components/form/form';
+import { Row } from '@scripts/base/components/row/row';
 
-export class WUserForm extends Component {
+export class UserForm extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -39,51 +39,51 @@ export class WUserForm extends Component {
   render() {
     return (
       <div className="w-user-form">
-        <WForm onSubmit={ this.save } errorMessage={ this.state.errorMessage }>
-          <WRow>
-            <WCol size="12">
-              <WField label="Name">
+        <Form onSubmit={ this.save } errorMessage={ this.state.errorMessage }>
+          <Row>
+            <Col size="12">
+              <Field label="Name">
                 <input
                   type="text"
                   name="name"
                   defaultValue={ this.state.name }
                   onChange={ this.onUserDataChange }
                   required />
-              </WField>
-            </WCol>
-          </WRow>
-          <WRow>
-            <WCol size="12">
-              <WField label="Email">
+              </Field>
+            </Col>
+          </Row>
+          <Row>
+            <Col size="12">
+              <Field label="Email">
                 <input
                   type="email"
                   name="email"
                   defaultValue={ this.state.email }
                   onChange={ this.onUserDataChange }
                   required />
-              </WField>
-            </WCol>
-          </WRow>
-          <WRow>
-            <WCol size="12">
-              <WField label="Password">
+              </Field>
+            </Col>
+          </Row>
+          <Row>
+            <Col size="12">
+              <Field label="Password">
                 <input
                   type="password"
                   name="password"
                   defaultValue={ this.state.password }
                   onChange={ this.onUserDataChange }
                   required />
-              </WField>
-            </WCol>
-          </WRow>
-          <WRow align="center">
-            <WCol size="12">
-              <WButton type="submit" theme="primary">
+              </Field>
+            </Col>
+          </Row>
+          <Row align="center">
+            <Col size="12">
+              <Button type="submit" theme="primary">
                 Sign Up
-              </WButton>
-            </WCol>
-          </WRow>
-        </WForm>
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </div>
     );
   }

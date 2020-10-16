@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Link } from 'react-router-dom';
-import { WCard } from '@scripts/base/components/card/card';
-import { WCover } from '@scripts/base/components/cover/cover';
-import { WLogo } from '@scripts/base/components/logo/logo';
-import { WViewport } from '@scripts/base/components/viewport/viewport';
-import { WUserAuthForm } from '@scripts/user/components/user-auth-form/user-auth-form';
+import { Card } from '@scripts/base/components/card/card';
+import { Cover } from '@scripts/base/components/cover/cover';
+import { Logo } from '@scripts/base/components/logo/logo';
+import { Viewport } from '@scripts/base/components/viewport/viewport';
+import { UserAuthForm } from '@scripts/user/components/user-auth-form/user-auth-form';
 import { SignIn } from './sign-in';
 
 describe('Sign In', () => {
@@ -17,27 +17,27 @@ describe('Sign In', () => {
 
   it('should contain a viewport', () => {
     const wrapper = mount();
-    expect(wrapper.find(WViewport).length).toEqual(1);
+    expect(wrapper.find(Viewport).length).toEqual(1);
   });
 
   it('should contain a cover', () => {
     const wrapper = mount();
-    expect(wrapper.find(WCover).length).toEqual(1);
+    expect(wrapper.find(Cover).length).toEqual(1);
   });
 
   it('should contain a logo', () => {
     const wrapper = mount();
-    expect(wrapper.find(WLogo).length).toEqual(1);
+    expect(wrapper.find(Logo).length).toEqual(1);
   });
 
   it('should contain a card', () => {
     const wrapper = mount();
-    expect(wrapper.find(WCard).length).toEqual(1);
+    expect(wrapper.find(Card).length).toEqual(1);
   });
 
   it('should contain an auth form', () => {
     const wrapper = mount();
-    expect(wrapper.find(WUserAuthForm).length).toEqual(1);
+    expect(wrapper.find(UserAuthForm).length).toEqual(1);
   });
 
   it('should contain a link to sign up', () => {

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import financeResource from '@scripts/finance/resources/finance/finance';
 import routeService from '@scripts/base/services/route/route';
 import { WRequester } from '@scripts/base/components/requester/requester';
-import { WFinanceCard } from '@scripts/finance/components/finance-card/finance-card';
+import { FinanceCard } from '@scripts/finance/components/finance-card/finance-card';
 
-export class WFinanceCardList extends Component {
+export class FinanceCardList extends Component {
   constructor(props){
     super(props);
     this.state = {};
@@ -33,7 +33,7 @@ export class WFinanceCardList extends Component {
 
 function buildFinanceCards(items){
   return items && items.map((item, index) => {
-    return <WFinanceCard
+    return <FinanceCard
       title={ item.name }
       value={ item.value }
       valueSymbol={ item.valueSymbol }

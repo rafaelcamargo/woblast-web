@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WHomeCover } from '@scripts/home/components/home-cover/home-cover';
+import { HomeCover } from '@scripts/home/components/home-cover/home-cover';
 
 describe('Home Cover', () => {
   function mount(){
     return shallow(
-      <WHomeCover />
+      <HomeCover />
     );
   }
 

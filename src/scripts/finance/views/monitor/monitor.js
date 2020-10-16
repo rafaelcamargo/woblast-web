@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import { WCol } from '@scripts/base/components/col/col';
-import { WContainer } from '@scripts/base/components/container/container';
-import { WLoader } from '@scripts/base/components/loader/loader';
-import { WRow } from '@scripts/base/components/row/row';
-import { WViewport } from '@scripts/base/components/viewport/viewport';
-import { WFinanceMonitorCard } from '@scripts/finance/components/finance-monitor-card/finance-monitor-card';
+import { Col } from '@scripts/base/components/col/col';
+import { Container } from '@scripts/base/components/container/container';
+import { Loader } from '@scripts/base/components/loader/loader';
+import { Row } from '@scripts/base/components/row/row';
+import { Viewport } from '@scripts/base/components/viewport/viewport';
+import { FinanceMonitorCard } from '@scripts/finance/components/finance-monitor-card/finance-monitor-card';
 
 export class Monitor extends Component {
   render() {
     return (
-      <WViewport>
-        <WContainer>
-          <WRow>
-            <WCol size="12">
-              <WFinanceMonitorCard />
-            </WCol>
-          </WRow>
-        </WContainer>
-      </WViewport>
+      <Viewport>
+        <Container>
+          <Row>
+            <Col size="12">
+              <FinanceMonitorCard />
+            </Col>
+          </Row>
+        </Container>
+      </Viewport>
     );
   }
 }

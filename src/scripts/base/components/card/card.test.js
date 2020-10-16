@@ -1,19 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { PromiseMock } from '@scripts/base/mocks/promise';
-import { WLoader } from '@scripts/base/components/loader/loader';
-import { WCard } from '@scripts/base/components/card/card';
+import { Loader } from '@scripts/base/components/loader/loader';
+import { Card } from '@scripts/base/components/card/card';
 
 describe('Card', () => {
   function mount(props = {}){
     return shallow(
-      <WCard
+      <Card
         title={ props.title }
         onFetch={ props.onFetch }
         onFetchSuccess={ props.onFetchSuccess }
         onFetchError={ props.onFetchError }>
         { props.content }
-      </WCard>
+      </Card>
     );
   }
 
@@ -37,7 +37,7 @@ describe('Card', () => {
   it('should show loader on fetch', () => {
     const onFetch = jest.fn(() => new PromiseMock('success', { shouldAbortRequest: true }));
     const wrapper = mount({ onFetch });
-    expect(wrapper.find(WLoader).length).toEqual(1);
+    expect(wrapper.find(Loader).length).toEqual(1);
   });
 
   it('should execute fetch success callback on fetch success', () => {
@@ -46,7 +46,7 @@ describe('Card', () => {
     const onFetchSuccess = jest.fn();
     const wrapper = mount({ onFetch, onFetchSuccess });
     expect(onFetchSuccess).toHaveBeenCalledWith(response);
-    expect(wrapper.find(WLoader).length).toEqual(0);
+    expect(wrapper.find(Loader).length).toEqual(0);
   });
 
   it('should execute fetch error callback on fetch error', () => {
@@ -55,7 +55,7 @@ describe('Card', () => {
     const onFetchError = jest.fn();
     const wrapper = mount({ onFetch, onFetchError });
     expect(onFetchError).toHaveBeenCalledWith(err);
-    expect(wrapper.find(WLoader).length).toEqual(0);
+    expect(wrapper.find(Loader).length).toEqual(0);
   });
 
   it('should render some content', () => {
