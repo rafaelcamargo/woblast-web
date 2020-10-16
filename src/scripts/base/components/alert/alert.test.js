@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WAlert } from '@scripts/base/components/alert/alert';
+import { Alert } from '@scripts/base/components/alert/alert';
 
 describe('Alert', () => {
   function mount(props = {}){
     return shallow(
-      <WAlert theme={ props.theme }>
+      <Alert theme={ props.theme }>
         { props.content }
-      </WAlert>
+      </Alert>
     );
   }
 

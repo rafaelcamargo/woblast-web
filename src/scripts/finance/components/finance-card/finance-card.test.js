@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WCard } from '@scripts/base/components/card/card';
-import { WFinanceCard } from '@scripts/finance/components/finance-card/finance-card';
+import { Card } from '@scripts/base/components/card/card';
+import { FinanceCard } from '@scripts/finance/components/finance-card/finance-card';
 
 describe('Finance Card', () => {
   function mount(props = {}){
     return shallow(
-      <WFinanceCard
+      <FinanceCard
         title={ props.title }
         value={ props.value }
         valueSymbol={ props.valueSymbol }
@@ -32,7 +32,7 @@ describe('Finance Card', () => {
   it('should render a title', () => {
     const title = 'Titlte';
     const wrapper = mount({ title });
-    expect(wrapper.find(WCard).prop('title')).toEqual(title);
+    expect(wrapper.find(Card).prop('title')).toEqual(title);
   });
 
   it('should render a value', () => {

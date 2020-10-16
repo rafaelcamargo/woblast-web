@@ -3,13 +3,13 @@ import useruserAuthService from '@scripts/user/services/user-auth/user-auth';
 import domService from '@scripts/base/services/dom/dom';
 import routeService from '@scripts/base/services/route/route';
 import userResource from '@scripts/user/resources/user/user';
-import { WButton } from '@scripts/base/components/button/button';
-import { WCol } from '@scripts/base/components/col/col';
-import { WField } from '@scripts/base/components/field/field';
-import { WForm } from '@scripts/base/components/form/form';
-import { WRow } from '@scripts/base/components/row/row';
+import { Button } from '@scripts/base/components/button/button';
+import { Col } from '@scripts/base/components/col/col';
+import { Field } from '@scripts/base/components/field/field';
+import { Form } from '@scripts/base/components/form/form';
+import { Row } from '@scripts/base/components/row/row';
 
-export class WUserAuthForm extends Component {
+export class UserAuthForm extends Component {
   constructor(props){
     super(props);
     this.initialEmail = getInitialEmail();
@@ -43,22 +43,22 @@ export class WUserAuthForm extends Component {
   render() {
     return (
       <div className="w-user-auth-form">
-        <WForm onSubmit={ this.signIn } errorMessage={ this.state.errorMessage }>
-          <WRow>
-            <WCol size="12">
-              <WField label="Email">
+        <Form onSubmit={ this.signIn } errorMessage={ this.state.errorMessage }>
+          <Row>
+            <Col size="12">
+              <Field label="Email">
                 <input
                   type="email"
                   name="email"
                   defaultValue={ this.state.email }
                   onChange={ this.onUserDataChange }
                   required />
-              </WField>
-            </WCol>
-          </WRow>
-          <WRow>
-            <WCol size="12">
-              <WField label="Password">
+              </Field>
+            </Col>
+          </Row>
+          <Row>
+            <Col size="12">
+              <Field label="Password">
                 <input
                   type="password"
                   name="password"
@@ -66,17 +66,17 @@ export class WUserAuthForm extends Component {
                   onChange={ this.onUserDataChange }
                   ref={ this.passwordInputRef }
                   required />
-              </WField>
-            </WCol>
-          </WRow>
-          <WRow align="center">
-            <WCol size="12">
-              <WButton type="submit" theme="primary">
+              </Field>
+            </Col>
+          </Row>
+          <Row align="center">
+            <Col size="12">
+              <Button type="submit" theme="primary">
                 Sign In
-              </WButton>
-            </WCol>
-          </WRow>
-        </WForm>
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </div>
     );
   }

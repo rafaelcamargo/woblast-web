@@ -2,13 +2,13 @@ import '@styles/topbar.styl';
 import React, { Component } from 'react';
 import userAuthService from '@scripts/user/services/user-auth/user-auth';
 import { Link } from 'react-router-dom';
-import { WButton } from '@scripts/base/components/button/button';
-import { WCol } from '@scripts/base/components/col/col';
-import { WContainer } from '@scripts/base/components/container/container';
-import { WLogo } from '@scripts/base/components/logo/logo';
-import { WRow } from '@scripts/base/components/row/row';
+import { Button } from '@scripts/base/components/button/button';
+import { Col } from '@scripts/base/components/col/col';
+import { Container } from '@scripts/base/components/container/container';
+import { Logo } from '@scripts/base/components/logo/logo';
+import { Row } from '@scripts/base/components/row/row';
 
-export class WTopbar extends Component {
+export class Topbar extends Component {
 
   logout = () => {
     userAuthService.logout();
@@ -17,18 +17,18 @@ export class WTopbar extends Component {
   render() {
     return (
       <div className="w-topbar">
-        <WContainer>
-          <WRow>
-            <WCol size="12">
+        <Container>
+          <Row>
+            <Col size="12">
               <Link to="/dashboard">
-                <WLogo />
+                <Logo />
               </Link>
-              <WButton onClick={ this.logout }>
+              <Button onClick={ this.logout }>
                 Logout
-              </WButton>
-            </WCol>
-          </WRow>
-        </WContainer>
+              </Button>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

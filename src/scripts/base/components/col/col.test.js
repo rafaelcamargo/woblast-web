@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WCol } from '@scripts/base/components/col/col';
+import { Col } from '@scripts/base/components/col/col';
 
 describe('Col', () => {
   function mount(props = {}){
     return shallow(
-      <WCol size={ props.size } offset={ props.offset }>
+      <Col size={ props.size } offset={ props.offset }>
         { props.content }
-      </WCol>
+      </Col>
     );
   }
 

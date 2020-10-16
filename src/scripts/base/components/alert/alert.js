@@ -2,7 +2,7 @@ import '@styles/alert.styl';
 import React, { Component } from 'react';
 import propBasedCssClassService from '@scripts/base/services/prop-based-css/prop-based-css';
 
-export class WAlert extends Component {
+export class Alert extends Component {
   constructor(props){
     super(props);
     this.state = { className: buildClassName(props) };

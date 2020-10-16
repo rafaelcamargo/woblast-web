@@ -2,9 +2,9 @@ import '@styles/viewport.styl';
 import React, { Component } from 'react';
 import userAuthService from '@scripts/user/services/user-auth/user-auth';
 import routeService from '@scripts/base/services/route/route';
-import { WTopbar } from '@scripts/base/components/topbar/topbar';
+import { Topbar } from '@scripts/base/components/topbar/topbar';
 
-export class WViewport extends Component {
+export class Viewport extends Component {
   constructor(props){
     super(props);
     if(shouldRedirectToSignIn())
@@ -41,5 +41,5 @@ function pathnameIsOneOf(paths){
 }
 
 function buildTopbar(hideTopbar){
-  return !hideTopbar ? <WTopbar /> : null;
+  return !hideTopbar ? <Topbar /> : null;
 }

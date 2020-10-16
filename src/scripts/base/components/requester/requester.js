@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { WLoader } from '@scripts/base/components/loader/loader';
+import { Loader } from '@scripts/base/components/loader/loader';
 
 export class WRequester extends Component {
   constructor(props){
@@ -25,7 +25,7 @@ export class WRequester extends Component {
     this.setContentVisibility(true);
   }
   setLoaderVisibility(shouldShow){
-    this.setState({ shouldShowLoader: shouldShow });
+    this.setState({ shouldShoLoader: shouldShow });
   }
   setContentVisibility(shouldShow){
     this.setState({ shouldShowContent: shouldShow });
@@ -33,7 +33,7 @@ export class WRequester extends Component {
   render() {
     return (
       <div className="w-requester">
-        { buildLoader(this.state.shouldShowLoader) }
+        { buildLoader(this.state.shouldShoLoader) }
         <div className={ buildContentClassName(this.state.shouldShowContent) } data-requester-content>
           { this.props.children }
         </div>
@@ -47,6 +47,6 @@ function buildContentClassName(shouldShowContent){
   return shouldShowContent ? `${baseCssClass} ${baseCssClass}-visible` : baseCssClass;
 }
 
-function buildLoader(shouldShowLoader){
-  return shouldShowLoader ? <div className="w-card-loader"><WLoader /></div> : null;
+function buildLoader(shouldShoLoader){
+  return shouldShoLoader ? <div className="w-card-loader"><Loader /></div> : null;
 }

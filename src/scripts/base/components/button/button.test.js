@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { WButton } from '@scripts/base/components/button/button';
+import { Button } from '@scripts/base/components/button/button';
 
 describe('Button', () => {
   function mount(props = {}){
     return shallow(
-      <WButton
+      <Button
         type={ props.type }
         theme={ props.theme }
         display={ props.display }
         onClick={ props.onClick }>
         { props.content }
-      </WButton>
+      </Button>
     );
   }
 

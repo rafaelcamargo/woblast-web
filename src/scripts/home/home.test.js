@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Home } from '@scripts/home/home';
-import { WHomeCover } from '@scripts/home/components/home-cover/home-cover';
+import { HomeCover } from '@scripts/home/components/home-cover/home-cover';
 
 describe('Home Cover', () => {
   function mount(){
@@ -12,6 +12,6 @@ describe('Home Cover', () => {
 
   it('should contain a home cover', () => {
     const wrapper = mount();
-    expect(wrapper.find(WHomeCover).length).toEqual(1);
+    expect(wrapper.find(HomeCover).length).toEqual(1);
   });
 });

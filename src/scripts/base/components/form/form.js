@@ -1,8 +1,8 @@
 import '@styles/form.styl';
 import React, { Component } from 'react';
-import { WAlert } from '@scripts/base/components/alert/alert';
+import { Alert } from '@scripts/base/components/alert/alert';
 
-export class WForm extends Component {
+export class Form extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     this.props.onSubmit();
@@ -19,5 +19,5 @@ export class WForm extends Component {
 }
 
 function buildErrorElement(message){
-  return message ? <WAlert theme="danger">{ message }</WAlert> : null;
+  return message ? <Alert theme="danger">{ message }</Alert> : null;
 }

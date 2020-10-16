@@ -2,7 +2,7 @@
 > An experimental project to get started with HG Brasil Finance API and ChartJS
 
 [![CircleCI](https://circleci.com/gh/rafaelcamargo/woblast-web/tree/master.svg?style=svg)](https://circleci.com/gh/rafaelcamargo/woblast-web/tree/master)
-[![codecov](https://codecov.io/gh/rafaelcamargo/woblast-web/branch/master/graph/badge.svg)](https://codecov.io/gh/rafaelcamargo/woblast-web)
+[![Coverage Status](https://coveralls.io/repos/github/rafaelcamargo/woblast-web/badge.svg)](https://coveralls.io/github/rafaelcamargo/woblast-web)
 
 ## Contributing
 
