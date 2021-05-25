@@ -1,3 +1,4 @@
+import ENV from '@environment';
 import { PromiseMock } from '@scripts/base/mocks/promise';
 import { FinanceResponseMock } from '@scripts/finance/mocks/finance';
 import baseResource from '@scripts/base/resources/base/base';
@@ -7,7 +8,7 @@ describe('Finance Resource', () => {
   it('should get items', () => {
     baseResource.get = jest.fn(() => new PromiseMock('success', { shouldAbortRequest: true }));
     financeResource.get();
-    expect(baseResource.get).toHaveBeenCalledWith('http://localhost:3000/finance?format=json&key=489e9445');
+    expect(baseResource.get).toHaveBeenCalledWith(`${ENV.VERVET.BASE_URL}/projects/${ENV.VERVET.PROJECTS.FINANCE.ID}/finances`);
   });
 
   it('should parse items on get', () => {

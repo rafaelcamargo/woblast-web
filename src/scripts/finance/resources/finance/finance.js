@@ -18,7 +18,7 @@ _public.getItem = (type, key) => {
 };
 
 function getUrl(){
-  return `${ENV.HG_BRASIL_API.BASE_URL}/finance?format=${ENV.HG_BRASIL_API.FORMAT}&key=${ENV.HG_BRASIL_API.KEY}`;
+  return `${ENV.VERVET.BASE_URL}/projects/${ENV.VERVET.PROJECTS.FINANCE.ID}/finances`;
 }
 
 function parseData(response){
